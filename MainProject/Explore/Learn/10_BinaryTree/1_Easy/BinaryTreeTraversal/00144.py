@@ -18,7 +18,7 @@ class Solution:
         self.preorder_recurs(root.left, res)
         self.preorder_recurs(root.right, res)
 
-
+########## TEST ########################################################################################################
 sln = Solution()
 root = TreeNode(1, None, TreeNode(2, None, TreeNode(3)))
 print(sln.preorderTraversal(root))

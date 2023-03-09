@@ -18,7 +18,7 @@ class Solution:
         self.postorder_recurs(root.right, res)
         res.append(root.val)
 
-
+########## TEST ########################################################################################################
 sln = Solution()
 root = TreeNode(1, None, TreeNode(2, TreeNode(3), None))
 print(sln.postorderTraversal(root))

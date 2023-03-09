@@ -42,6 +42,7 @@ class Solution:
             q_curr = q_next
         return res
 
+########## TEST ########################################################################################################
 sln = Solution()
 root = TreeNode(1, TreeNode(20, TreeNode(30), None), TreeNode(2, TreeNode(3), None))
 print(sln.levelOrder(root))

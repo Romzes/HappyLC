@@ -20,7 +20,7 @@ class Solution:
         if curr_flag: curr_cnt += 1
         return curr_cnt, curr_flag
 
-
+########## TEST ########################################################################################################
 sln = Solution()
 root = TreeNode(1, TreeNode(1, TreeNode(2, None, TreeNode(2))), TreeNode(1))
 print(sln.countUnivalSubtrees(root))

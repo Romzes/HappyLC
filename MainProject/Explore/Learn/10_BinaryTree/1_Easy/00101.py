@@ -8,14 +8,14 @@ class TreeNode:
 class Solution:
     def isSymmetric(self, root):
         if not root: return True
-        return self.is_sym(root.left, root.right)
+        return self.is_mirror(root.left, root.right)
 
-    def is_sym(self, ln, rn):
+    def is_mirror(self, ln, rn):
         if not ln and not rn: return True
         # if (ln and not rn) or (not ln and rn) or (ln.val != rn.val): return False
-        if not ln or not rn or ln.val != rn.val: return False  # для ускорения
+        if not ln or not rn or ln.val != rn.val: return False  # упрощение предыдущей закомментированной строки
         # если первый вызов функции = False, то вторая функция не вызывается
-        return self.is_sym(ln.left, rn.right) and self.is_sym(ln.right, rn.left)
+        return self.is_mirror(ln.left, rn.right) and self.is_mirror(ln.right, rn.left)
 
 ########## TEST ########################################################################################################
 sln = Solution()

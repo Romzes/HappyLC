@@ -8,15 +8,15 @@ class TreeNode:
 ### Recursive
 class Solution:
     def inorderTraversal(self, root):
-        self.res = []
-        self.inorder(root)
+        self.res = []  # для ускорения: res не передается в рекурсивную функцию
+        if root: self.inorder_recurs(root)
         return self.res
 
-    def inorder(self, root):
-        if root is None: return
-        self.inorder(root.left)
+    def inorder_recurs(self, root):
+        # для ускорения: в рекурсивную функцию всегда передается root != None
+        if root.left: self.inorder_recurs(root.left)
         self.res.append(root.val)
-        self.inorder(root.right)
+        if root.right: self.inorder_recurs(root.right)
 
 ########## TEST ########################################################################################################
 sln = Solution()

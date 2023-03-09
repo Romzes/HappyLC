@@ -9,14 +9,14 @@ class TreeNode:
 class Solution:
     def preorderTraversal(self, root):
         res = []
-        self.preorder(root, res)
+        self.preorder_recurs(root, res)
         return res
 
-    def preorder(self, root, res):
+    def preorder_recurs(self, root, res):
         if root is None: return
         res.append(root.val)
-        self.preorder(root.left, res)
-        self.preorder(root.right, res)
+        self.preorder_recurs(root.left, res)
+        self.preorder_recurs(root.right, res)
 
 
 sln = Solution()

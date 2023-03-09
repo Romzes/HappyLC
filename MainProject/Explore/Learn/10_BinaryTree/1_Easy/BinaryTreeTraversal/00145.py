@@ -9,13 +9,13 @@ class TreeNode:
 class Solution:
     def postorderTraversal(self, root):
         res = []
-        self.postorder(root, res)
+        self.postorder_recurs(root, res)
         return res
 
-    def postorder(self, root, res):
+    def postorder_recurs(self, root, res):
         if root is None: return
-        self.postorder(root.left, res)
-        self.postorder(root.right, res)
+        self.postorder_recurs(root.left, res)
+        self.postorder_recurs(root.right, res)
         res.append(root.val)
 
 

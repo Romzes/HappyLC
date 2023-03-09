@@ -1,0 +1,8 @@
+Traverse a Tree
+pre-order traversal  : root, left-subtree, right-subtree
+in-order traversal   :  left-subtree, root, right-subtree
+post-order traversal : left-subtree, right-subtree, root
+mathematical expression tree : post-order calculation
+
+!!! TODO !!!
+Iterative Solution with Stack изучить дополнительно

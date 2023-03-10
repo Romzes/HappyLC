@@ -15,7 +15,6 @@ class Solution:
         if not (v1 < node.val < v2): return False  # строгие условия
         return self.check_recurs(node.left, v1=v1, v2=node.val) and self.check_recurs(node.right, v1=node.val, v2=v2)
 
-
 ########## TEST ########################################################################################################
 sln = Solution()
 root = TreeNode(1, None, TreeNode(3, TreeNode(2)))

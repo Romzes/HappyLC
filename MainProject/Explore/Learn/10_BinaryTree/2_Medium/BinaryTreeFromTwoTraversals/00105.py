@@ -23,7 +23,7 @@ class Solution:
         tn = TreeNode(val=self.preorder[self.pre_ind])
         inorder_ind = self.inorder_map[tn.val]
         self.pre_ind += 1
-        # важен порядок вычисления: сначала tn.left, потом tn.right
+        # !!! важен порядок вычисления: сначала tn.left, потом tn.right
         tn.left = self.build_recurs(n1=n1, n2=inorder_ind-1)
         tn.right = self.build_recurs(n1=inorder_ind+1, n2=n2)
         return tn

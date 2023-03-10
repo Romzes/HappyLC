@@ -4,20 +4,39 @@
 # Clarification: The input/output format is the same as how LeetCode serializes a binary tree.
 # You do not necessarily need to follow this format, so please be creative and come up with different approaches yourself.
 
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val, self.left, self.right = val, left, right
+
 class Codec:
     def serialize(self, root):
-        """Encodes a tree to a single string.
+        # root -> string
+        self.data = []
+        self.ser_node(root)
+        return ','.join(self.data)
 
-        :type root: TreeNode
-        :rtype: str
-        """
+    def ser_node(self, node):
+        if not node:
+            self.data.append('n')
+            return
+        self.data.append(str(node.val))
+        self.ser_node(node.left)
+        self.ser_node(node.right)
 
     def deserialize(self, data):
-        """Decodes your encoded data to tree.
+        # string -> root
+        if data is None or data == '': return None
+        self.values, self.ind = data.split(','), 0
+        return self.deser_node()
 
-        :type data: str
-        :rtype: TreeNode
-        """
+    def deser_node(self):
+        v = self.values[self.ind]
+        self.ind += 1
+        if v == 'n': return None
+        node = TreeNode(int(v))
+        node.left = self.deser_node()
+        node.right = self.deser_node()
+        return node
 
 # Your Codec object will be instantiated and called as such:
 # ser = Codec()

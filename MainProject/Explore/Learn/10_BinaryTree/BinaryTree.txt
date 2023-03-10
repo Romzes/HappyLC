@@ -10,3 +10,13 @@ Iterative Solution with Stack изучить дополнительно
 Рекурсия, находимся в вершине node.
 Не всегда нужно делать обработку node.left, а затем обработку node.right.
 В некоторых случаях результата proc(node.left) уже достаточно для решения задачи и в node.right идти уже не нужно.
+
+ВАЖНЫЕ ЗАДАЧИ
+----- обход дерева -----
+Traversal: 94 inorder, 144 preorder, 145 postorder
+TreeFromTwoTraversals: 105, 106
+102 LevelOrderTraversal
+
+104 MaxTreeDepth
+236 LowestCommonAncestor
+297 SerializeDeserialize

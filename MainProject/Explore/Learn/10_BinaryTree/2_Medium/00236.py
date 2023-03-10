@@ -10,12 +10,33 @@ class TreeNode:
 
 class Solution:
     def lowestCommonAncestor(self, root, p, q):
+        if not root: return None
         if isinstance(p, TreeNode): p = p.val
         if isinstance(q, TreeNode): q = q.val
-        pass
+        self.vals = (p, q)
+        self.empty_res = (None, 0)
+        return self.find_recurs(root)[0]
+
+    def find_recurs(self, node):
+        # return : (None, 0) ничего не нашли ; (node, 2) нашли p и q; (node, 1) нашли только p или q
+        if not node: return self.empty_res
+        if node.val not in self.vals:
+            left_res = self.find_recurs(node.left)
+            if left_res[1] == 2: return left_res
+            right_res = self.find_recurs(node.right)
+            if right_res[1] > 0 and left_res[1] == 0: return right_res
+            if left_res[1] > 0 and right_res[1] == 0: return left_res
+            if left_res[1] > 0 and right_res[1] > 0: return (node, 2)
+            return self.empty_res
+        if node.val in self.vals:
+            left_res = self.find_recurs(node.left)
+            if left_res[1] > 0: return (node, 2)
+            right_res = self.find_recurs(node.right)
+            if right_res[1] > 0: return (node, 2)
+            return (node, 1)
 
 ########## TEST ########################################################################################################
 sln = Solution()
-root = TreeNode(1, TreeNode(2), TreeNode(3))
-lca = sln.lowestCommonAncestor(root, 2, 3)
+root = TreeNode(1, TreeNode(2), TreeNode(3, TreeNode(4), TreeNode(5)))
+lca = sln.lowestCommonAncestor(root, 4, 5)
 print(lca.val)

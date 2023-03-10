@@ -10,13 +10,14 @@ class Solution:
     def countUnivalSubtrees(self, root):
         return self.count_rec(root)[0]
 
-    def count_rec(self, root):
-        if not root: return 0, False
-        left_cnt, left_flag = self.count_rec(root.left)
-        right_cnt, right_flag = self.count_rec(root.right)
+    def count_rec(self, node):
+        # return tuple : cnt = number of univalue-subtrees, flag = (node.val == univalue)
+        if not node: return 0, False
+        left_cnt, left_flag = self.count_rec(node.left)
+        right_cnt, right_flag = self.count_rec(node.right)
         curr_cnt = left_cnt + right_cnt
-        curr_flag = (not root.left or (left_flag and root.left.val == root.val)) and \
-                    (not root.right or (right_flag and root.right.val == root.val))
+        curr_flag = (not node.left or (left_flag and node.left.val == node.val)) and \
+                    (not node.right or (right_flag and node.right.val == node.val))
         if curr_flag: curr_cnt += 1
         return curr_cnt, curr_flag
 

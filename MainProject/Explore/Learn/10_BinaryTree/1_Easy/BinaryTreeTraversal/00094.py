@@ -12,11 +12,11 @@ class Solution:
         if root: self.inorder_recurs(root)
         return self.res
 
-    def inorder_recurs(self, root):
-        # для ускорения: в рекурсивную функцию всегда передается root != None
-        if root.left: self.inorder_recurs(root.left)
-        self.res.append(root.val)
-        if root.right: self.inorder_recurs(root.right)
+    def inorder_recurs(self, node):
+        # для ускорения: в рекурсивную функцию всегда передается node != None
+        if node.left: self.inorder_recurs(node.left)
+        self.res.append(node.val)
+        if node.right: self.inorder_recurs(node.right)
 
 ########## TEST ########################################################################################################
 sln = Solution()

@@ -15,17 +15,17 @@ class Solution:
         self.inorder = inorder
         self.inorder_map = {v: i for i, v in enumerate(inorder)}
         self.preorder, self.pre_ind = preorder, 0
-        return self.build_recurs(n1=0, n2=len(self.inorder)-1)
+        return self.build_recurs(k1=0, k2=len(self.inorder)-1)
 
-    def build_recurs(self, n1, n2):
-        # n1 first, n2 last : inorder-indexes
-        if n1 > n2: return None
+    def build_recurs(self, k1, k2):
+        # k1 first, k2 last : inorder-indexes
+        if k1 > k2: return None
         tn = TreeNode(val=self.preorder[self.pre_ind])
         inorder_ind = self.inorder_map[tn.val]
         self.pre_ind += 1
         # !!! важен порядок вычисления: сначала tn.left, потом tn.right
-        tn.left = self.build_recurs(n1=n1, n2=inorder_ind-1)
-        tn.right = self.build_recurs(n1=inorder_ind+1, n2=n2)
+        tn.left = self.build_recurs(k1=k1, k2=inorder_ind-1)
+        tn.right = self.build_recurs(k1=inorder_ind+1, k2=k2)
         return tn
 
 ########## TEST ########################################################################################################

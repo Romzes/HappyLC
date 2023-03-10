@@ -12,11 +12,11 @@ class Solution:
         self.preorder_recurs(root, res)
         return res
 
-    def preorder_recurs(self, root, res):
-        if root is None: return
-        res.append(root.val)
-        self.preorder_recurs(root.left, res)
-        self.preorder_recurs(root.right, res)
+    def preorder_recurs(self, node, res):
+        if node is None: return
+        res.append(node.val)
+        self.preorder_recurs(node.left, res)
+        self.preorder_recurs(node.right, res)
 
 ########## TEST ########################################################################################################
 sln = Solution()

@@ -6,3 +6,7 @@ mathematical expression tree : post-order calculation
 
 !!! TODO !!!
 Iterative Solution with Stack изучить дополнительно
+
+Рекурсия, находимся в вершине node.
+Не всегда нужно делать обработку node.left, а затем обработку node.right.
+В некоторых случаях результата proc(node.left) уже достаточно для решения задачи и в node.right идти уже не нужно.

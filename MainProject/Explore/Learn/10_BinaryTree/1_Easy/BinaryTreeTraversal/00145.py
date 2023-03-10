@@ -12,11 +12,11 @@ class Solution:
         self.postorder_recurs(root, res)
         return res
 
-    def postorder_recurs(self, root, res):
-        if root is None: return
-        self.postorder_recurs(root.left, res)
-        self.postorder_recurs(root.right, res)
-        res.append(root.val)
+    def postorder_recurs(self, node, res):
+        if node is None: return
+        self.postorder_recurs(node.left, res)
+        self.postorder_recurs(node.right, res)
+        res.append(node.val)
 
 ########## TEST ########################################################################################################
 sln = Solution()

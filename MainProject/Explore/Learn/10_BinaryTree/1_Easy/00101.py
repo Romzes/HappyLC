@@ -11,6 +11,7 @@ class Solution:
         return self.is_mirror(root.left, root.right)
 
     def is_mirror(self, ln, rn):
+        # ln, rn = left-node, right-node
         if not ln and not rn: return True
         # if (ln and not rn) or (not ln and rn) or (ln.val != rn.val): return False
         if not ln or not rn or ln.val != rn.val: return False  # упрощение предыдущей закомментированной строки

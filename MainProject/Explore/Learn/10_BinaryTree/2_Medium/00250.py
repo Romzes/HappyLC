@@ -1,4 +1,4 @@
-# 250. Count Univalue Subtrees
+# Medium 250. Count Univalue Subtrees
 # Given the root of a binary tree, return the number of uni-value subtrees.
 # A uni-value subtree means all nodes of the subtree have the same value.
 

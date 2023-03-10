@@ -37,6 +37,6 @@ class Solution:
 
 ########## TEST ########################################################################################################
 sln = Solution()
-root = TreeNode(1, TreeNode(2), TreeNode(3, TreeNode(4), TreeNode(5)))
-lca = sln.lowestCommonAncestor(root, 4, 5)
+root = TreeNode(1, TreeNode(2), TreeNode(3, None, TreeNode(5)))
+lca = sln.lowestCommonAncestor(root, 2, 5)
 print(lca.val)

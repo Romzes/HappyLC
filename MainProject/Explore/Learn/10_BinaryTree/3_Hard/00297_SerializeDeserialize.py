@@ -9,6 +9,7 @@ class TreeNode:
         self.val, self.left, self.right = val, left, right
 
 class Codec:
+    ##### SERIALIZE #####
     def serialize(self, root):
         # root -> string
         self.data = []
@@ -23,6 +24,7 @@ class Codec:
         self.ser_node(node.left)
         self.ser_node(node.right)
 
+    ##### DESERIALIZE #####
     def deserialize(self, data):
         # string -> root
         if data is None or data == '': return None

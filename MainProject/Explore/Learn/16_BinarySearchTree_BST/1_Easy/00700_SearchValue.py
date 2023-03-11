@@ -10,11 +10,9 @@ class TreeNode:
 class Solution:
     def searchBST(self, root, val):
         curr = root
-        while curr:
-            if val == curr.val: return curr
-            if val < curr.val: curr = curr.left
-            elif curr.val < val: curr = curr.right
-        return None
+        while curr and curr.val != val:
+            curr = curr.left if val < curr.val else curr.right
+        return curr
 
 ########## TEST ########################################################################################################
 sln = Solution()

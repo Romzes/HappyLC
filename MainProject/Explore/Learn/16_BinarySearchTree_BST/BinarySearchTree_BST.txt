@@ -1,5 +1,7 @@
 ВАЖНЫЕ ЗАДАЧИ
 98 IsValidBST
+700 SearchValue
+
 ----- InorderStep -----
 285 InorderSuccessor
 103 InorderIterator # !!! НУЖНО УСКОРИТЬ !!!

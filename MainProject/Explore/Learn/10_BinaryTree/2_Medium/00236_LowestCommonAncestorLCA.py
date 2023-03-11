@@ -13,7 +13,7 @@ class Solution:
         if not root: return None
         if isinstance(p, TreeNode): p = p.val
         if isinstance(q, TreeNode): q = q.val
-        self.vals = (p, q)
+        self.vals = (min(p, q), max(p, q))
         self.empty_res = (None, 0)
         return self.find_recurs(root)[0]
 
@@ -28,11 +28,11 @@ class Solution:
             if left_res[1] > 0 and right_res[1] == 0: return left_res
             if left_res[1] > 0 and right_res[1] > 0: return (node, 2)
             return self.empty_res
-        if node.val in self.vals:
+        else:  # node.val in (p, q)
             left_res = self.find_recurs(node.left)
-            if left_res[1] > 0: return (node, 2)
+            if left_res[0]: return (node, 2)
             right_res = self.find_recurs(node.right)
-            if right_res[1] > 0: return (node, 2)
+            if right_res[0]: return (node, 2)
             return (node, 1)
 
 ########## TEST ########################################################################################################

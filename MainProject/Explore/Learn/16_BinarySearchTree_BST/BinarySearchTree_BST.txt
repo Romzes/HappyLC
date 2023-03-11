@@ -1,6 +1,11 @@
 ВАЖНЫЕ ЗАДАЧИ
 98 IsValidBST
+Operation
 700 SearchValue
+701 InsertNode
+450 DeleteNode  !!! придумать оптимальное решение !!!
+
+
 
 ----- InorderStep -----
 285 InorderSuccessor

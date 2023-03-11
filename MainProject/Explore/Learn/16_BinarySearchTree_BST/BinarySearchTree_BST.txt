@@ -1,5 +1,6 @@
 ВАЖНЫЕ ЗАДАЧИ
 98 IsValidBST
 ----- InorderStep -----
-285 InorderSuccessor, 103 InorderIterator
+285 InorderSuccessor
+103 InorderIterator # !!! НУЖНО УСКОРИТЬ !!!
 

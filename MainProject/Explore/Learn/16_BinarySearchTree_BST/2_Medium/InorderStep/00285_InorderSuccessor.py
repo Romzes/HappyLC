@@ -21,8 +21,9 @@ class Solution:
         return anc
 
     def to_leftmost(self, node):
-        while node.left: node = node.left
-        return node
+        lm = node
+        while lm.left: lm = lm.left
+        return lm
 
 ########## TEST ########################################################################################################
 sln = Solution()

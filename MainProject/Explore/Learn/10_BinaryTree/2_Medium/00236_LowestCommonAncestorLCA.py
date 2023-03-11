@@ -24,10 +24,8 @@ class Solution:
             left_res = self.find_recurs(node.left)
             if left_res[1] == 2: return left_res
             right_res = self.find_recurs(node.right)
-            if right_res[1] > 0 and left_res[1] == 0: return right_res
-            if left_res[1] > 0 and right_res[1] == 0: return left_res
-            if left_res[1] > 0 and right_res[1] > 0: return (node, 2)
-            return self.empty_res
+            if left_res[0] and right_res[0]: return (node, 2)
+            return left_res if left_res[0] else right_res
         else:  # node.val in (p, q)
             left_res = self.find_recurs(node.left)
             if left_res[0]: return (node, 2)

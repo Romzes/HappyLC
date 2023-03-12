@@ -28,6 +28,7 @@ class Solution:
     def find_path(self, graph, src, dst):
         if src not in graph or dst not in graph: return False
         stack = [src]
+        # ordered вместо visited
         ordered = set([src])  # если нет в ordered, то можно добавлять в stack (133. Clone Graph)
         while len(stack) > 0:
             cur = stack.pop()

@@ -11,6 +11,7 @@ class Solution:
         if source == destination: return True
         return self.find_path(self.create_graph(edges), source, destination)
 
+    # visited-list variant 1
     def find_path(self, graph, src, dst):
         if src not in graph or dst not in graph: return False
         stack, visited = [src], set()
@@ -21,6 +22,20 @@ class Solution:
             for nd in graph[cur]:
                 if nd == dst: return True
                 if nd not in visited: stack.append(nd)
+        return False
+
+    # visited-list variant 2
+    def find_path(self, graph, src, dst):
+        if src not in graph or dst not in graph: return False
+        stack = [src]
+        ordered = set([src])  # если нет в ordered, то можно добавлять в stack (133. Clone Graph)
+        while len(stack) > 0:
+            cur = stack.pop()
+            for nd in graph[cur]:
+                if nd == dst: return True
+                if nd not in ordered:
+                    ordered.add(nd)
+                    stack.append(nd)
         return False
 
     def create_graph(self, edges):

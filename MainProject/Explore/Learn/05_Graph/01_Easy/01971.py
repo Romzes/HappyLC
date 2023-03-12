@@ -13,7 +13,7 @@ class Solution:
 
     def find_path(self, graph, src, dst):
         if src not in graph or dst not in graph: return False
-        visited, stack = set(), [src]
+        stack, visited = [src], set()
         while len(stack) > 0:
             cur = stack.pop()
             if cur in visited: continue

@@ -9,7 +9,8 @@
 class Solution:
     def findItinerary(self, tickets):
         # tickets: List[List[str]], return List[str]
-        self.create_ticket_graph(tickets)
+        self.tickets = tickets
+        self.create_ticket_graph()
         self.min_route = None
         start_arp = 'JFK'
         self.curr_route = [start_arp]
@@ -17,14 +18,13 @@ class Solution:
         return self.min_route
 
     def proc_node(self, curr_arp):
-        curr_ind = len(self.curr_route)
-        if self.min_route is not None and self.min_route[curr_ind] < curr_arp: return
+        if self.min_route: return
 
         prev_arp = self.curr_route[-1]
         self.curr_route.append(curr_arp)
         self.ticket_graph[prev_arp]['edges'][curr_arp] -= 1
 
-        if len(tickets) == len(self.curr_route) - 1:
+        if len(self.tickets) == len(self.curr_route) - 1:
             self.min_route = [arp for arp in self.curr_route]
         elif curr_arp in self.ticket_graph:
             for next_arp in self.ticket_graph[curr_arp]['children']:
@@ -35,9 +35,9 @@ class Solution:
         self.curr_route.pop()
         self.ticket_graph[prev_arp]['edges'][curr_arp] += 1
 
-    def create_ticket_graph(self, tickets):
+    def create_ticket_graph(self):
         self.ticket_graph = {}
-        for t in tickets:
+        for t in self.tickets:
             src, dst = t[0], t[1]
             if src not in self.ticket_graph: self.ticket_graph[src] = dict(edges={})
             edges = self.ticket_graph[src]['edges']
@@ -46,11 +46,28 @@ class Solution:
         for item in self.ticket_graph.values():
             item['children'] = sorted(item['edges'].keys())
 
+import collections
+class Solution:
+    def findItinerary(self, tickets):
+        ans = []
+        graph = collections.defaultdict(list)
+        for a, b in reversed(sorted(tickets)): graph[a].append(b)
+
+        def dfs(u):
+            while u in graph and graph[u]:
+                dfs(graph[u].pop())
+            ans.append(u)
+
+        dfs('JFK')
+        return ans[::-1]
+
 ########## TEST ########################################################################################################
 sln = Solution()
-tickets = [["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]]
+tickets = [['JFK', '2'], ['JFK ', '3']]
 print(sln.findItinerary(tickets))
-tickets = [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
-print(sln.findItinerary(tickets))
-tickets = [["AXA","EZE"],["EZE","AUA"],["ADL","JFK"],["ADL","TIA"],["AUA","AXA"],["EZE","TIA"],["EZE","TIA"],["AXA","EZE"],["EZE","ADL"],["ANU","EZE"],["TIA","EZE"],["JFK","ADL"],["AUA","JFK"],["JFK","EZE"],["EZE","ANU"],["ADL","AUA"],["ANU","AXA"],["AXA","ADL"],["AUA","JFK"],["EZE","ADL"],["ANU","TIA"],["AUA","JFK"],["TIA","JFK"],["EZE","AUA"],["AXA","EZE"],["AUA","ANU"],["ADL","AXA"],["EZE","ADL"],["AUA","ANU"],["AXA","EZE"],["TIA","AUA"],["AXA","EZE"],["AUA","SYD"],["ADL","JFK"],["EZE","AUA"],["ADL","ANU"],["AUA","TIA"],["ADL","EZE"],["TIA","JFK"],["AXA","ANU"],["JFK","AXA"],["JFK","ADL"],["ADL","EZE"],["AXA","TIA"],["JFK","AUA"],["ADL","EZE"],["JFK","ADL"],["ADL","AXA"],["TIA","AUA"],["AXA","JFK"],["ADL","AUA"],["TIA","JFK"],["JFK","ADL"],["JFK","ADL"],["ANU","AXA"],["TIA","AXA"],["EZE","JFK"],["EZE","AXA"],["ADL","TIA"],["JFK","AUA"],["TIA","EZE"],["EZE","ADL"],["JFK","ANU"],["TIA","AUA"],["EZE","ADL"],["ADL","JFK"],["ANU","AXA"],["AUA","AXA"],["ANU","EZE"],["ADL","AXA"],["ANU","AXA"],["TIA","ADL"],["JFK","ADL"],["JFK","TIA"],["AUA","ADL"],["AUA","TIA"],["TIA","JFK"],["EZE","JFK"],["AUA","ADL"],["ADL","AUA"],["EZE","ANU"],["ADL","ANU"],["AUA","AXA"],["AXA","TIA"],["AXA","TIA"],["ADL","AXA"],["EZE","AXA"],["AXA","JFK"],["JFK","AUA"],["ANU","ADL"],["AXA","TIA"],["ANU","AUA"],["JFK","EZE"],["AXA","ADL"],["TIA","EZE"],["JFK","AXA"],["AXA","ADL"],["EZE","AUA"],["AXA","ANU"],["ADL","EZE"],["AUA","EZE"]]
-print(sln.findItinerary(tickets))
+# tickets = [["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]]
+# print(sln.findItinerary(tickets))
+# tickets = [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
+# print(sln.findItinerary(tickets))
+# tickets = [["AXA","EZE"],["EZE","AUA"],["ADL","JFK"],["ADL","TIA"],["AUA","AXA"],["EZE","TIA"],["EZE","TIA"],["AXA","EZE"],["EZE","ADL"],["ANU","EZE"],["TIA","EZE"],["JFK","ADL"],["AUA","JFK"],["JFK","EZE"],["EZE","ANU"],["ADL","AUA"],["ANU","AXA"],["AXA","ADL"],["AUA","JFK"],["EZE","ADL"],["ANU","TIA"],["AUA","JFK"],["TIA","JFK"],["EZE","AUA"],["AXA","EZE"],["AUA","ANU"],["ADL","AXA"],["EZE","ADL"],["AUA","ANU"],["AXA","EZE"],["TIA","AUA"],["AXA","EZE"],["AUA","SYD"],["ADL","JFK"],["EZE","AUA"],["ADL","ANU"],["AUA","TIA"],["ADL","EZE"],["TIA","JFK"],["AXA","ANU"],["JFK","AXA"],["JFK","ADL"],["ADL","EZE"],["AXA","TIA"],["JFK","AUA"],["ADL","EZE"],["JFK","ADL"],["ADL","AXA"],["TIA","AUA"],["AXA","JFK"],["ADL","AUA"],["TIA","JFK"],["JFK","ADL"],["JFK","ADL"],["ANU","AXA"],["TIA","AXA"],["EZE","JFK"],["EZE","AXA"],["ADL","TIA"],["JFK","AUA"],["TIA","EZE"],["EZE","ADL"],["JFK","ANU"],["TIA","AUA"],["EZE","ADL"],["ADL","JFK"],["ANU","AXA"],["AUA","AXA"],["ANU","EZE"],["ADL","AXA"],["ANU","AXA"],["TIA","ADL"],["JFK","ADL"],["JFK","TIA"],["AUA","ADL"],["AUA","TIA"],["TIA","JFK"],["EZE","JFK"],["AUA","ADL"],["ADL","AUA"],["EZE","ANU"],["ADL","ANU"],["AUA","AXA"],["AXA","TIA"],["AXA","TIA"],["ADL","AXA"],["EZE","AXA"],["AXA","JFK"],["JFK","AUA"],["ANU","ADL"],["AXA","TIA"],["ANU","AUA"],["JFK","EZE"],["AXA","ADL"],["TIA","EZE"],["JFK","AXA"],["AXA","ADL"],["EZE","AUA"],["AXA","ANU"],["ADL","EZE"],["AUA","EZE"]]
+# print(sln.findItinerary(tickets))

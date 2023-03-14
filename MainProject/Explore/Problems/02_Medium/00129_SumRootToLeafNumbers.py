@@ -9,6 +9,7 @@ class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val, self.left, self.right = val, left, right
 
+### RECURSION
 class Solution:
     def sumNumbers(self, root):
         # root: Optional[TreeNode], return int
@@ -24,6 +25,23 @@ class Solution:
             return
         if node.left: self.add_recurs(node.left, prev=curr)
         if node.right: self.add_recurs(node.right, prev=curr)
+
+##### STACK
+class Solution:
+    def sumNumbers(self, root):
+        # root: Optional[TreeNode], return int
+        if not root: return 0
+        sum = 0
+        stack = [(root, 0)]
+        while len(stack) > 0:
+            node, prev = stack.pop()
+            curr = 10 * prev + node.val
+            if not node.left and not node.right:
+                sum += curr
+                continue
+            if node.left: stack.append((node.left, curr))
+            if node.right: stack.append((node.right, curr))
+        return sum
 
 ########## TEST ########################################################################################################
 sln = Solution()

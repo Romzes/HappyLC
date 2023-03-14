@@ -3,8 +3,8 @@ class UnionFind:
     def __init__(self, size):
         self.vert = [i for i in range(size)]  # вершины для наглядности
         self.root = [i for i in range(size)]
-        # Use a rank array to record the height of each vertex, i.e., the "rank" of each vertex.
-        # The initial "rank" of each vertex is 1, because each of them is
+        # Use a rank array to record the height of each vertex, i.e., the 'rank' of each vertex.
+        # The initial 'rank' of each vertex is 1, because each of them is
         # a standalone vertex with no connection to other vertices.
         self.rank = [1] * size
 

@@ -42,13 +42,13 @@ class Solution:
         # visited-list variant 1
         if src not in graph or dst not in graph: return False
         stack = [src]
-        ordered = set([src])  # если нет в ordered, то можно добавлять в stack (133. Clone Graph)
+        planned = set([src])  # если нет в planned, то можно добавлять в stack (133. Clone Graph)
         while len(stack) > 0:
             cur = stack.pop()
             for nd in graph[cur]:
                 if nd == dst: return True  # found
-                if nd not in ordered:
-                    ordered.add(nd)
+                if nd not in planned:
+                    planned.add(nd)
                     stack.append(nd)
         return False
 
@@ -57,13 +57,13 @@ class Solution:
         # visited-list variant 2
         if src not in graph or dst not in graph: return False
         q = deque([src])
-        ordered = set([src])  # если нет в ordered, то можно добавлять в stack (133. Clone Graph)
+        planned = set([src])  # если нет в planned, то можно добавлять в stack (133. Clone Graph)
         while len(q) > 0:
             cur = q.popleft()
             for nd in graph[cur]:
                 if nd == dst: return True  # found
-                if nd not in ordered:
-                    ordered.add(nd)
+                if nd not in planned:
+                    planned.add(nd)
                     q.append(nd)
         return False
 

@@ -73,7 +73,7 @@ class Solution:
         return True
 
     def get_next_level(self, full_level, no_child):
-        next_level = None if no_child else []
+        next_level = []
         for node in full_level:
             if node.left:
                 if no_child: return next_level, True

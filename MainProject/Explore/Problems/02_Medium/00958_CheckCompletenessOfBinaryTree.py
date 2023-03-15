@@ -85,6 +85,21 @@ class Solution:
             else: no_child = True
         return next_level, False
 
+##### !!! Fastest !!!
+from collections import deque
+class Solution:
+    def isCompleteTree(self, root):
+        q, null_flag = deque([root]), False
+        while len(q) > 0:
+            node = q.popleft()
+            if not node:
+                null_flag = True
+                continue
+            if null_flag: return False
+            q.append(node.left)
+            q.append(node.right)
+        return True
+
 ########## TEST ########################################################################################################
 sln = Solution()
 root = TreeNode(1, TreeNode(2,  TreeNode(4), TreeNode(5)), TreeNode(3, TreeNode(11), TreeNode(6)))

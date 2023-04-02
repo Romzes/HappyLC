@@ -7,21 +7,20 @@
 class Solution:
     def successfulPairs(self, spells, potions, success):
         potions.sort()
-        res = len(spells) * [None]
-        for i, s in enumerate(spells): res[i] = self.count(potions, p=success/s)
-        return res
+        for i, s in enumerate(spells): spells[i] = self.count(potions, min_p=success/s)
+        return spells  # spells as result
 
-    def count(self, potions, p):
-        # potions: sorted list[int]
-        # return: number of elements potions >= p
-        if potions[-1] < p: return 0
-        if p <= potions[0]: return len(potions)
+    def count(self, potions, min_p):
+        # potions: asc sorted list[int]
+        # return: number of elements potions >= min_p
+        if potions[-1] < min_p: return 0
+        if min_p <= potions[0]: return len(potions)
         j1, j2 = 0, len(potions)-1
-        i = j2  # min index potions[i] >= p
+        i = j2  # min index potions[i] >= min_p
         while j1 <= j2:
             mi = int((j1 + j2) / 2)
             mv = potions[mi]
-            if mv < p: j1 = mi+1
+            if mv < min_p: j1 = mi + 1
             else: j2, i = mi-1, mi
         return len(potions)-i
 

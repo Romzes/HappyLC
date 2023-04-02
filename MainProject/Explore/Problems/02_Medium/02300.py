@@ -12,10 +12,12 @@ class Solution:
         return res
 
     def count(self, potions, p):
+        # potions: sorted list[int]
+        # return: number of elements potions >= p
         if potions[-1] < p: return 0
         if p <= potions[0]: return len(potions)
         j1, j2 = 0, len(potions)-1
-        i = j2  # p <= potions[i]
+        i = j2  # min index potions[i] >= p
         while j1 <= j2:
             mi = int((j1 + j2) / 2)
             mv = potions[mi]

@@ -7,26 +7,25 @@ class Solution:
     def closedIsland(self, grid):
         self.grid, self.M, self.N = grid, len(grid), len(grid[0])  # M x N = rows x columns
         self.LAND, self.WATER = 0, 1
-        self.not_closed_islands, island_id = set(), 0
+        closed_cnt = 0
         for i0 in range(self.M):
             for j0 in range(self.N):
-                if self.grid[i0][j0] != self.LAND: continue
-                island_id -= 1
-                self.paint_island(island_id, i0, j0)
-        return abs(island_id) - len(self.not_closed_islands)
+                if self.grid[i0][j0] == self.LAND: closed_cnt += self.paint_island(i0, j0)
+        return closed_cnt
 
-    def paint_island(self, island_id, i0, j0):
-        stack, ordered = [(i0, j0)], set([(i0, j0)])
+    def paint_island(self, i0, j0):
+        is_closed, stack, ordered = 1, [(i0, j0)], set([(i0, j0)])
         while stack:
             i, j = stack.pop()
-            self.grid[i][j] = island_id
-            if i in (0, self.M-1) or j in (0, self.N-1): self.not_closed_islands.add(island_id)
+            self.grid[i][j] = 2
+            if i in (0, self.M-1) or j in (0, self.N-1): is_closed = 0
             for i1, j1 in [(i-1,j), (i+1,j), (i,j-1), (i,j+1)]:
                 k = (i1, j1)
                 if i1 < 0 or i1 >= self.M or j1 < 0 or j1 >= self.N or self.grid[i1][j1] != self.LAND or k in ordered:
                     continue
                 stack.append(k)
                 ordered.add(k)
+        return is_closed
 
 sln = Solution()
 grid = [

@@ -1,19 +1,28 @@
-# Medium 1254. Number of Closed Islands
-# Given a 2D grid consists of 0s (land) and 1s (water).
-# An island is a maximal 4-directionally connected group of 0s and a closed island is an island totally (all left, top, right, bottom) surrounded by 1s.
-# Return the number of closed islands.
+# Medium 1020. Number of Enclaves
+# You are given an m x n binary matrix grid, where 0 represents a sea cell and 1 represents a land cell.
+# A move consists of walking from one land cell to another adjacent (4-directionally) land cell or walking off the boundary of the grid.
+# Return the number of land cells in grid for which we cannot walk off the boundary of the grid in any number of moves.
 
 class Solution:
-    def closedIsland(self, grid):
+    def numEnclaves(self, grid):
         self.grid, self.M, self.N = grid, len(grid), len(grid[0])  # M x N = rows x columns
-        self.LAND, self.WATER = 0, 1
+        self.LAND, self.WATER = 1, 0
         self.not_closed_islands, island_id = set(), 0
         for i0 in range(self.M):
             for j0 in range(self.N):
                 if self.grid[i0][j0] != self.LAND: continue
                 island_id -= 1
                 self.paint_island(island_id, i0, j0)
-        return abs(island_id) - len(self.not_closed_islands)
+
+        cell_cnt = 0
+        for i0 in range(self.M):
+            for j0 in range(self.N):
+                v = self.grid[i0][j0]
+                if v != self.WATER and v not in self.not_closed_islands:
+                    cell_cnt += 1
+
+        return cell_cnt
+
 
     def paint_island(self, island_id, i0, j0):
         stack, ordered = [(i0, j0)], set([(i0, j0)])
@@ -30,30 +39,18 @@ class Solution:
 
 sln = Solution()
 grid = [
-    [1,1,1,1,1,1,1,0],
-    [1,0,0,0,0,1,1,0],
-    [1,0,1,0,1,1,1,0],
-    [1,0,0,0,0,1,0,1],
-    [1,1,1,1,1,1,1,0]
+    [0,0,0,0],
+    [1,0,1,0],
+    [0,1,1,0],
+    [0,0,0,0]
 ]
-print(sln.closedIsland(grid))
+print(sln.numEnclaves(grid))
 
 sln = Solution()
 grid = [
-    [0,0,1,0,0],
-    [0,1,0,1,0],
-    [0,1,1,1,0]
+    [0,1,1,0],
+    [0,0,1,0],
+    [0,0,1,0],
+    [0,0,0,0]
 ]
-print(sln.closedIsland(grid))
-
-sln = Solution()
-grid = [
-    [1,1,1,1,1,1,1],
-    [1,0,0,0,0,0,1],
-    [1,0,1,1,1,0,1],
-    [1,0,1,0,1,0,1],
-    [1,0,1,1,1,0,1],
-    [1,0,0,0,0,0,1],
-    [1,1,1,1,1,1,1]
-]
-print(sln.closedIsland(grid))
+print(sln.numEnclaves(grid))

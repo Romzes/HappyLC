@@ -7,7 +7,7 @@ class Solution:
     def closedIsland(self, grid):
         self.grid, self.M, self.N = grid, len(grid), len(grid[0])  # M x N = rows x columns
         self.m_edges, self.n_edges = (0, self.M-1), (0, self.N-1)
-        self.LAND, self.WATER = 0, 1
+        self.LAND, self.WATER, self.VISITED_LAND = 0, 1, 2
         closed_cnt = 0
         for i0 in range(1, self.M-1):
             for j0 in range(1, self.N-1):
@@ -19,7 +19,7 @@ class Solution:
         while stack:
             i, j = stack.pop()
             if self.grid[i][j] != self.LAND: continue
-            self.grid[i][j] = 2
+            self.grid[i][j] = self.VISITED_LAND
             if is_closed and (i in self.m_edges or j in self.n_edges): is_closed = False
             for i1, j1 in [(i-1,j), (i+1,j), (i,j-1), (i,j+1)]:
                 if i1 < 0 or i1 >= self.M or j1 < 0 or j1 >= self.N or self.grid[i1][j1] != self.LAND: continue

@@ -6,26 +6,29 @@
 class Solution:
     def numEnclaves(self, grid):
         self.grid, self.M, self.N = grid, len(grid), len(grid[0])  # M x N = rows x columns
-        self.m_edges, self.n_edges = (0, self.M-1), (0, self.N-1)
-        self.LAND, self.WATER = 1, 0
-        cell_cnt = 0
-        for i0 in range(1, self.M-1):
-            for j0 in range(1, self.N-1):
-                if self.grid[i0][j0] == self.LAND: cell_cnt += self.paint_island(i0, j0)
-        return cell_cnt
+        self.LAND, self.WATER, self.VISITED_LAND = 1, 0, 2
+        land_cell_cnt = 0
+        for row in self.grid: land_cell_cnt += sum(row)
+        boundary_cell_cnt = 0
+        for i0 in (0, self.M-1):
+            for j0 in range(self.N):
+                if self.grid[i0][j0] == self.LAND: boundary_cell_cnt += self.paint_boundary_island(i0, j0)
+        for i0 in range(self.M):
+            for j0 in (0, self.N-1):
+                if self.grid[i0][j0] == self.LAND: boundary_cell_cnt += self.paint_boundary_island(i0, j0)
+        return land_cell_cnt - boundary_cell_cnt
 
-    def paint_island(self, i0, j0):
-        cell_cnt, is_closed, stack = 0, True, [(i0, j0)]
+    def paint_boundary_island(self, i0, j0):
+        cell_cnt, stack = 0, [(i0, j0)]
         while stack:
             i, j = stack.pop()
             if self.grid[i][j] != self.LAND: continue
-            self.grid[i][j] = 2
+            self.grid[i][j] = self.VISITED_LAND
             cell_cnt += 1
-            if is_closed and (i in self.m_edges or j in self.n_edges): is_closed = False
             for i1, j1 in [(i-1, j), (i+1, j), (i, j-1), (i, j+1)]:
                 if i1 < 0 or i1 >= self.M or j1 < 0 or j1 >= self.N or self.grid[i1][j1] != self.LAND: continue
                 stack.append((i1, j1))
-        return cell_cnt if is_closed else 0
+        return cell_cnt
 
 sln = Solution()
 grid = [

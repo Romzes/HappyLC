@@ -3,11 +3,10 @@
 
 class Solution:
     def firstUniqChar(self, s):
-        stat = {}
-        for i, c in enumerate(s):
-            if c not in stat: stat[c] = i
-            else: stat.pop(c)
-        return min(stat.values()) if len(stat) > 0 else -1
+        lng, stat = len(s), {}
+        for i, c in enumerate(s): stat[c] = i if c not in stat else lng
+        i = min(stat.values())
+        return -1 if i == lng else i
 
 sln = Solution()
 print(sln.firstUniqChar(s='leetcode'))
@@ -17,3 +16,6 @@ print(sln.firstUniqChar(s='loveleetcode'))
 
 sln = Solution()
 print(sln.firstUniqChar(s='aabb'))
+
+sln = Solution()
+print(sln.firstUniqChar(s='aadadaad'))

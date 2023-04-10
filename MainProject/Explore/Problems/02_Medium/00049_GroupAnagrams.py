@@ -7,7 +7,7 @@ from collections import defaultdict
 class Solution:
     def groupAnagrams(self, strs):
         d = defaultdict(list)
-        for s in strs: d['.'.join(sorted(s))].append(s)
+        for s in strs: d[''.join(sorted(s))].append(s)  # sorted(s) return list[char]
         return list(d.values())
 
 sln = Solution()

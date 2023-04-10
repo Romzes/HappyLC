@@ -7,11 +7,11 @@
 
 class Solution:
     def isValid(self, s):
-        stack, open, close = [], '({[', {')': '(', '}': '{', ']': '['}
+        brackets, stack = {'(':')', '{':'}', '[':']'}, []
         for c in s:
-            if c in open: stack.append(c)
+            if c in brackets: stack.append(c)
             else:
-                if not stack or stack.pop() != close[c]: return False
+                if not stack or brackets[stack.pop()] != c: return False
         return len(stack) == 0
 
 sln = Solution()

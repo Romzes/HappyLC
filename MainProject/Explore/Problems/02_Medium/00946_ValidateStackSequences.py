@@ -11,23 +11,18 @@ class Solution:
     def validateStackSequences(self, pushed, popped):
         i, j, n, stack = 0, 0, len(pushed), []
         while True:
-            if stack and j < n and stack[-1] == popped[j]:
-                stack.pop()
-                j += 1
-            elif i < n:
-                stack.append(pushed[i])
-                i += 1
-            else:
-                break
+            if stack and j < n and stack[-1] == popped[j]: stack.pop(); j += 1
+            elif i < n: stack.append(pushed[i]); i += 1
+            else: break
         return len(stack) == 0
 
 # two pointers, memory=O(1)
 class Solution:
     def validateStackSequences(self, pushed, popped):
-        i, j, n, s = 0, 0, len(pushed), 0
+        i = j = s = 0; n = len(pushed)
         while True:
-            if s > 0 and j < n and pushed[s-1] == popped[j]: s, j = s-1, j+1
-            elif i < n: pushed[s], s, i = pushed[i], s+1, i+1
+            if s > 0 and j < n and pushed[s-1] == popped[j]: s -= 1; j += 1
+            elif i < n: pushed[s] = pushed[i]; s += 1; i += 1
             else: break
         return s == 0
 

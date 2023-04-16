@@ -8,11 +8,11 @@
 
 class Solution:
     def rob(self, nums):
-        lng = len(nums)
-        if lng <= 2: return max(nums)
-        res = lng * [None]
+        n = len(nums)
+        if n <= 2: return max(nums)
+        res = n * [None]
         res[0] = nums[0]; res[1] = max(nums[0], nums[1])
-        for i in range(2, lng): res[i] = max(res[i-1], nums[i] + res[i-2])
+        for i in range(2, n): res[i] = max(res[i-1], nums[i] + res[i-2])
         return res[-1]
 
 class Solution:

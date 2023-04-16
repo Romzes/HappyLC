@@ -5,8 +5,8 @@
 
 class Solution:
     def numEnclaves(self, grid):
-        self.grid, self.M, self.N = grid, len(grid), len(grid[0])  # M x N = rows x columns
-        self.LAND, self.WATER, self.VISITED_LAND = 1, 0, 2
+        self.grid = grid; self.M = len(grid); self.N = len(grid[0])  # M x N = rows x columns
+        self.LAND = 1; self.WATER = 0; self.VISITED_LAND = 2
         land_cell_cnt = 0
         for row in self.grid: land_cell_cnt += sum(row)
         boundary_cell_cnt = 0
@@ -19,7 +19,7 @@ class Solution:
         return land_cell_cnt - boundary_cell_cnt
 
     def paint_boundary_island(self, i0, j0):
-        cell_cnt, stack = 0, [(i0, j0)]
+        cell_cnt = 0; stack = [(i0, j0)]
         while stack:
             i, j = stack.pop()
             if self.grid[i][j] != self.LAND: continue

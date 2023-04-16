@@ -5,9 +5,9 @@
 
 class Solution:
     def closedIsland(self, grid):
-        self.grid, self.M, self.N = grid, len(grid), len(grid[0])  # M x N = rows x columns
-        self.m_edges, self.n_edges = (0, self.M-1), (0, self.N-1)
-        self.LAND, self.WATER, self.VISITED_LAND = 0, 1, 2
+        self.grid = grid; self.M = len(grid); self.N = len(grid[0])  # M x N = rows x columns
+        self.m_edges = (0, self.M-1); self.n_edges = (0, self.N-1)
+        self.LAND = 0; self.WATER = 1; self.VISITED_LAND = 2
         closed_cnt = 0
         for i0 in range(1, self.M-1):
             for j0 in range(1, self.N-1):
@@ -15,7 +15,7 @@ class Solution:
         return closed_cnt
 
     def paint_island(self, i0, j0):
-        is_closed, stack = True, [(i0, j0)]
+        is_closed = True; stack = [(i0, j0)]
         while stack:
             i, j = stack.pop()
             if self.grid[i][j] != self.LAND: continue

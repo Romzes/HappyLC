@@ -11,11 +11,11 @@ class Solution:
     def summaryRanges(self, nums):
         if not nums: return []
         # nums.sort()
-        ranges, i0, v0 = [], 0, nums[0]
+        ranges = []; i0 = 0; v0 = nums[0]
         for i, v in enumerate(nums):
             if v != v0 + (i - i0):
                 ranges.append(self.rng(u1=v0, u2=nums[i-1]))
-                i0, v0 = i, v
+                i0 = i; v0 = v
         ranges.append(self.rng(u1=v0, u2=nums[-1]))
         return ranges
 

@@ -4,7 +4,7 @@
 
 class Solution:
     def intersect(self, nums1, nums2):
-        d1, d2 = {}, {}
+        d1 = {}; d2 = {}
         for v in nums1: d1[v] = d1.get(v, 0) + 1
         for v in nums2: d2[v] = d2.get(v, 0) + 1
         res = []

@@ -5,12 +5,11 @@
 
 class Solution:
     def maxEvents(self, events):
-        days, i = 2*len(events)*[None], 0
+        days = 2*len(events)*[None]; i = 0
         for ev in events:
-            days[i], days[i+1] = (ev[0], 1), (ev[1]+1, -1)
-            i += 2
+            days[i] = (ev[0], 1); days[i+1] = (ev[1]+1, -1); i += 2
         days.sort(key=lambda day: day[0] + 0.1*day[1])
-        sum, mx = 0, -1e10
+        sum = 0; mx = -1e10
         for i, day in enumerate(days):
             sum += day[1]
             if sum > mx: mx = sum

@@ -5,7 +5,8 @@
 class Solution:
     def shuffle(self, nums, n):
         res = len(nums) * [None]
-        for i in range(len(nums)//2): res[2*i], res[2*i+1] = nums[i], nums[n+i]
+        for i in range(len(nums)//2):
+            res[2*i] = nums[i]; res[2*i+1] = nums[n+i]
         return res
 
 ########## TEST ########################################################################################################

@@ -9,7 +9,7 @@
 # stack
 class Solution:
     def validateStackSequences(self, pushed, popped):
-        i, j, n, stack = 0, 0, len(pushed), []
+        i = j = 0; n = len(pushed); stack = []
         while True:
             if stack and j < n and stack[-1] == popped[j]: stack.pop(); j += 1
             elif i < n: stack.append(pushed[i]); i += 1
@@ -19,7 +19,7 @@ class Solution:
 # two pointers, memory=O(1)
 class Solution:
     def validateStackSequences(self, pushed, popped):
-        i = j = s = 0; n = len(pushed)
+        i = j = s = 0; n = len(pushed);
         while True:
             if s > 0 and j < n and pushed[s-1] == popped[j]: s -= 1; j += 1
             elif i < n: pushed[s] = pushed[i]; s += 1; i += 1

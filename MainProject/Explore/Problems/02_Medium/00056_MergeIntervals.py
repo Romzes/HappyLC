@@ -5,7 +5,7 @@
 class Solution:
     def merge(self, intervals):
         intervals.sort(key=lambda itv: itv[0])
-        res, curr = [], intervals[0]
+        res = []; curr = intervals[0]
         for itv in intervals:
             if itv[0] <= curr[1]: curr[1] = max(curr[1], itv[1])
             else:

@@ -24,11 +24,9 @@ class Solution2:
         # s: list
         j = 0
         for i, c in enumerate(s):
-            if c != '*': s[j], j = c, j+1
+            if c != '*': s[j] = c; j = j+1
             else: j -= 1
         return s[0:j]
-
-
 
 sln = Solution()
 print(sln.removeStars(s='leet**cod*e'))

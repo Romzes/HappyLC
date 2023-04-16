@@ -1,0 +1,6 @@
+1) Bottom-up (Tabulation)
+Iteration, starts at the base cases
+
+2) Top-down (Memoization)
+Recursion
+memoizing a result means to store the result of a function call, usually in a hashmap or an array

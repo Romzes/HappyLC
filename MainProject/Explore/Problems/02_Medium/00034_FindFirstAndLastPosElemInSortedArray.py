@@ -24,8 +24,9 @@ class Solution:
             elif mv == target:
                 ti = mi
                 if dir == '': break
-                if dir == 'L': i2 = mi-1
-                elif dir == 'R': i1 = mi+1
+                if dir == 'L' and ti > 0 and nums[ti-1] == target: i2 = mi-1
+                elif dir == 'R' and ti < len(nums)-1 and nums[ti+1] == target: i1 = mi+1
+                else: break
         return ti
 
 sln = Solution()

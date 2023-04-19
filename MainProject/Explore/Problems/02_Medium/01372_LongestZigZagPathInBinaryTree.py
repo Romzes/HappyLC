@@ -14,7 +14,7 @@ class TreeNode:
 
 class Solution:
     def longestZigZag(self, root):
-        self.mx = -float('inf')
+        self.mx = float('-inf')
         self.calc(nd=root)
         return self.mx
 

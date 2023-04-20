@@ -6,16 +6,11 @@
 
 class Solution:
     def longestCommonPrefix(self, strs):
-        min_lng = min(len(s) for s in strs); pref_lng = 0
+        min_lng = min(len(s) for s in strs)
         for i in range(min_lng):
-            eq = True
             for s in strs:
-                if s[i] != strs[0][i]:
-                    eq = False
-                    break
-            if eq: pref_lng += 1
-            else: break
-        return strs[0][0:pref_lng]
+                if s[i] != strs[0][i]: return s[0:i]
+        return strs[0][0:min_lng]
 
 sln = Solution()
 print(sln.longestCommonPrefix(strs=['flower', 'flow', 'flight']))

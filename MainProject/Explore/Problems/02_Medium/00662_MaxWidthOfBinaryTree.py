@@ -1,8 +1,27 @@
 # Definition for a binary tree node.
+import math
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val, self.left, self.right = val, left, right
 
+# STACK BFS
+class Solution:
+    def widthOfBinaryTree(self, root):
+        if not root: return 0
+        stack = [(root, 1)]; levels = {}
+        while stack:
+            nd, k = stack.pop()
+            h = int(math.log2(k))
+            lev = levels.get(h)
+            if lev: lev[0] = min(lev[0], k); lev[1] = max(lev[1], k);
+            else: levels[h] = [k, k]
+            if nd.right: stack.append((nd.right, 2*k+1))
+            if nd.left: stack.append((nd.left, 2*k))
+        return 1 + max(lev[1]-lev[0] for lev in levels.values())
+
+## QUEUE BFS
 class Solution:
     def widthOfBinaryTree(self, root):
         if not root: return 0

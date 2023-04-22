@@ -23,6 +23,21 @@ class Solution:
         return f'{u1}->{u2}' if u1 < u2 else str(u1)
 
 
+class Solution:
+    def summaryRanges(self, nums):
+        if not nums: return []
+        # nums.sort()
+        ranges = []
+        for v in nums:
+            if ranges and ranges[-1][1] == v-1: ranges[-1][1] = v
+            else: ranges.append([v, v])
+        for i in range(len(ranges)): ranges[i] = self.rng(u1=ranges[i][0], u2=ranges[i][1])
+        return ranges
+
+    def rng(self, u1, u2):
+        return f'{u1}->{u2}' if u1 < u2 else str(u1)
+
+
 sln = Solution()
 print(sln.summaryRanges(nums=[]))
 

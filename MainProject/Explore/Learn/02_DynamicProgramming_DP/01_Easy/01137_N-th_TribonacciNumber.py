@@ -5,8 +5,8 @@
 
 class Solution:
     def tribonacci(self, n):
-        if n <= 2: return [0,1,1][n]
         t0, t1, t2 = 0, 1, 1
+        if n <= 2: return (t0, t1, t2)[n]
         for i in range(n-2): t0, t1, t2 = t1, t2, t0+t1+t2
         return t2
 

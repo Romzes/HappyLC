@@ -7,6 +7,8 @@
 # Constraints:
 #   1 <= nums[i]
 
+### Задача похожа на 00198_HouseRobber
+
 from collections import Counter
 
 class Solution:
@@ -34,11 +36,32 @@ class Solution:
 class Solution:
     def deleteAndEarn(self, nums):
         cntr = Counter(nums); vals = sorted(cntr.keys()); sum = 0;
-        i1 = 0; v1 = vals[i1]
-        for i2, v2 in enumerate(vals):
-            if v2 > v1 + (i2-i1):
-                sum += self.calc_seq(vals, i1, i2-1, cntr)
-                i1 = i2; v1 = vals[i1]
+        i1 = i2 = 0
+        for i in range(1, len(vals)):
+            if vals[i2] == vals[i]-1: i2 += 1
+            else:
+                sum += self.calc_seq(vals, i1, i2, cntr)
+                i1 = i2 = i
+        sum += self.calc_seq(vals, i1, i2, cntr)
+        return sum
+
+    def calc_seq(self, vals, i1, i2, cntr):
+        # i1 <= i2; vals[i] = vals[i1] + (i-i1), i1 <= i <= i2
+        a = vals[i1] * cntr[vals[i1]]
+        if i2 == i1: return a
+        b = max(a, vals[i1+1] * cntr[vals[i1+1]])
+        if i2 == i1+1: return b
+        for i in range(i1+2, i2+1): a, b = b, max(b, a + vals[i] * cntr[vals[i]])
+        return b
+
+class Solution:
+    def deleteAndEarn(self, nums):
+        cntr = Counter(nums); vals = sorted(cntr.keys()); sum = 0;
+        i1 = 0
+        for i, v in enumerate(vals):
+            if v > vals[i1] + (i-i1):
+                sum += self.calc_seq(vals, i1, i-1, cntr)
+                i1 = i
         sum += self.calc_seq(vals, i1, len(vals)-1, cntr)
         return sum
 

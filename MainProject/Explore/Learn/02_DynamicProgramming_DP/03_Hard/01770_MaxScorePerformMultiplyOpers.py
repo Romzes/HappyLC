@@ -9,7 +9,15 @@
 
 class Solution:
     def maximumScore(self, nums, multipliers):
-        pass
+        n = len(nums); m = len(multipliers); dp = [m*[None] for _ in range(m)]
+        # make step=m
+        for j in range(m):
+            dp[m-1][j] = max(multipliers[m-1]*nums[j], multipliers[m-1]*nums[n-m+j])
+        for i in range(m-2,-1,-1):
+            # make step=(i+1)
+            for j in range(i+1):
+                dp[i][j] = max(multipliers[i]*nums[j]+dp[i+1][j+1], multipliers[i]*nums[n-i-1+j]+dp[i+1][j])
+        return dp[0][0]
 
 sln = Solution()
 print(sln.maximumScore(nums=[1,2,3], multipliers=[3,2,1]))

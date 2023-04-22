@@ -13,6 +13,7 @@ class Solution:
         # make step=m
         for j in range(m):
             dp[m-1][j] = max(multipliers[m-1]*nums[j], multipliers[m-1]*nums[n-m+j])
+        # make steps: m-1, m-2, ... 1
         for i in range(m-2,-1,-1):
             # make step=(i+1)
             for j in range(i+1):

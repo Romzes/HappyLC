@@ -4,15 +4,20 @@
 # For example, "ace" is a subsequence of "abcde".
 # A common subsequence of two strings is a subsequence that is common to both strings.
 
-##### Simple
 class Solution:
     def longestCommonSubsequence(self, text1, text2):
+        ### string intersection
+        chars = set(text1).intersection(set(text2))
+        if len(chars) == 0: return 0
+        text1 = ''.join(c for c in text1 if c in chars)
+        text2 = ''.join(c for c in text2 if c in chars)
+        ### Main Solution
         n = len(text1); m = len(text2); dp = [m*[0] for _ in text1]; arr = 3*[-1]
-        # dp[0][0..m-1]
+        ### dp[0][0..m-1]
         j2 = text2.find(text1[0])
         if j2 > -1:
             for j in range(j2, m): dp[0][j] = 1
-        # dp[0..n-1][0]
+        ### dp[0..n-1][0]
         i1 = text1.find(text2[0])
         if i1 > -1:
             for i in range(i1, n): dp[i][0] = 1
@@ -38,4 +43,5 @@ print(sln.longestCommonSubsequence(text1='abc', text2='abc'))
 
 sln = Solution()
 print(sln.longestCommonSubsequence(text1='abc', text2='def'))
+
 

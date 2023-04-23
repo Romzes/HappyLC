@@ -7,12 +7,12 @@
 ##### dp = matrix [m x n]
 class Solution:
     def longestCommonSubsequence(self, text1, text2):
-        ### string intersection
+        ##### string intersection
         chars = set(text1).intersection(set(text2))
         if len(chars) == 0: return 0
         text1 = ''.join(c for c in text1 if c in chars)
         text2 = ''.join(c for c in text2 if c in chars)
-        ### Main Solution
+        ##### main solution
         n = len(text1); m = len(text2); dp = [m*[0] for _ in text1]
         ### dp[0][0..m-1]
         j2 = text2.find(text1[0])
@@ -27,22 +27,22 @@ class Solution:
 
         return dp[n-1][m-1]
 
-##### Memory Optimization dp
+##### Memory Optimization dp = two rows: prev_row, curr_row
 class Solution:
     def longestCommonSubsequence(self, text1, text2):
-        ### string intersection
+        ##### string intersection
         chars = set(text1).intersection(set(text2))
         if len(chars) == 0: return 0
         text1 = ''.join(c for c in text1 if c in chars)
         text2 = ''.join(c for c in text2 if c in chars)
-        ### Main Solution
+        if len(text2) > len(text1): text1, text2 = text2, text1  # row memory optimization
+        ##### main solution
         n = len(text1); m = len(text2);  # dp = [m*[0] for _ in text1]
         prev_row = m*[0]  # = dp[0][0..m-1]
         j2 = text2.find(text1[0])
         for j in range(j2, m): prev_row[j] = 1
-        i1 = text1.find(text2[0])
-        # for i in range(i1, n): dp[i][0] = 1
         ### dp[1..n-1][0..m-1]
+        i1 = text1.find(text2[0])
         for i in range(1, n):
             curr_row = m*[0]  # = dp[i][0..m-1]
             for j in range(0, m):
@@ -51,6 +51,9 @@ class Solution:
             prev_row = curr_row
 
         return prev_row[m-1]
+
+sln = Solution()
+print(sln.longestCommonSubsequence(text1='a', text2='aa'))
 
 sln = Solution()
 print(sln.longestCommonSubsequence(text1='aaa', text2='aa'))

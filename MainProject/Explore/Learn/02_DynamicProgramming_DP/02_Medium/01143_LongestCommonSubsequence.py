@@ -12,21 +12,18 @@ class Solution:
         text1 = ''.join(c for c in text1 if c in chars)
         text2 = ''.join(c for c in text2 if c in chars)
         ### Main Solution
-        n = len(text1); m = len(text2); dp = [m*[0] for _ in text1]; arr = 3*[-1]
+        n = len(text1); m = len(text2); dp = [m*[0] for _ in text1]
         ### dp[0][0..m-1]
         j2 = text2.find(text1[0])
-        if j2 > -1:
-            for j in range(j2, m): dp[0][j] = 1
+        for j in range(j2, m): dp[0][j] = 1
         ### dp[0..n-1][0]
         i1 = text1.find(text2[0])
-        if i1 > -1:
-            for i in range(i1, n): dp[i][0] = 1
+        for i in range(i1, n): dp[i][0] = 1
         ### dp[1..n-1][1..m-1]
         for i in range(1, n):
             for j in range(1, m):
-                arr[0], arr[1], arr[2] = dp[i-1][j], dp[i][j-1], -1
-                if text1[i] == text2[j]: arr[2] = 1 + dp[i-1][j-1]
-                dp[i][j] = max(arr)
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1]) if text1[i] != text2[j] else 1 + dp[i-1][j-1]
+
         return dp[n-1][m-1]
 
 sln = Solution()

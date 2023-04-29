@@ -10,8 +10,7 @@ class Solution:
                 if self.is_similar(s1=strs[i], s2=strs[j]):
                     uf.union(i, j)
                     # print(i, strs[i], j, strs[j])
-        uf.normalize()
-        return len(set(uf.root))
+        return uf.groups
 
     def is_similar(self, s1, s2):
         diff = 0
@@ -43,7 +42,7 @@ class UnionFind:
         rootX = self.find_root(x)
         rootY = self.find_root(y)
         if rootX == rootY: return
-        self.groups += 1
+        self.groups -= 1
         if self.rank[rootX] > self.rank[rootY]: self.root[rootY] = rootX
         elif self.rank[rootX] < self.rank[rootY]: self.root[rootX] = rootY
         else:

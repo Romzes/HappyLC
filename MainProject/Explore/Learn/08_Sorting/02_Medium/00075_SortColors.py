@@ -5,14 +5,15 @@
 # You must solve this problem without using the library's sort function.
 # Could you come up with a one-pass algorithm using only constant extra space?
 
-### StatCounter
+### Counter, two-pass
 class Solution:
     def sortColors(self, nums):
-        stat = [0,0,0]; s = 0
-        for v in nums: stat[v] += 1
-        for v, cnt in enumerate(stat):
-            for i in range(s, s+cnt): nums[i] = v
-            s += cnt
+        counter = [0,0,0]
+        for v in nums: counter[v] += 1
+        i = 0
+        for v, cnt in enumerate(counter):
+            for _ in range(cnt): nums[i] = v; i += 1
+
 
 sln = Solution()
 nums = [2,0,2,1,1,0]
@@ -28,3 +29,7 @@ sln = Solution()
 nums = [1,2,0]
 sln.sortColors(nums)
 print(nums)
+
+arr = 5 * [0]
+arr[1:4] = 3*[30]
+print(arr)

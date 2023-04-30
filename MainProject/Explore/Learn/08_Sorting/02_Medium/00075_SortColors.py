@@ -14,6 +14,21 @@ class Solution:
         for v, cnt in enumerate(counter):
             for _ in range(cnt): nums[i] = v; i += 1
 
+### two-pointers
+class Solution:
+    def sortColors(self, nums):
+        i = 0; j0 = 0; j2 = len(nums)-1
+        while i <= j2:
+            if nums[i] == 0:
+                nums[j0], nums[i] = nums[i], nums[j0]
+                j0 += 1
+                i += 1
+            elif nums[i] == 2:
+                nums[j2], nums[i] = nums[i], nums[j2]
+                j2 -= 1
+            else:
+                i += 1
+
 
 sln = Solution()
 nums = [2,0,2,1,1,0]
@@ -30,6 +45,3 @@ nums = [1,2,0]
 sln.sortColors(nums)
 print(nums)
 
-arr = 5 * [0]
-arr[1:4] = 3*[30]
-print(arr)

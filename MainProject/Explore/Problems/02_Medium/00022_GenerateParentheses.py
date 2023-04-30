@@ -1,5 +1,8 @@
 # Medium 22. Generate Parentheses
 # Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+# Доказательство подсчёта числа путей
+# число Каталана = C_{n} = C_{2*n}^{n} - C_{2*n}^{n-1}
+# https://neerc.ifmo.ru/wiki/index.php?title=%D0%A7%D0%B8%D1%81%D0%BB%D0%B0_%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%B0%D0%BD%D0%B0#.D0.9F.D0.BE.D0.B4.D1.81.D1.87.D0.B5.D1.82_.D1.87.D0.B8.D1.81.D0.B5.D0.BB_.D0.9A.D0.B0.D1.82.D0.B0.D0.BB.D0.B0.D0.BD.D0.B0
 
 ### Recursive-1
 class Solution:
@@ -29,7 +32,8 @@ class Solution:
         return self.res
 
     def recurs(self, i, open, close):
-        if i == 2*self.n:
+        if open == self.n:
+            for j in range(i, 2*self.n): self.seq[j] = ')'
             self.res.append(''.join(self.seq))
             return
         if open < self.n:

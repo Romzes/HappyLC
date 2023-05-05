@@ -12,11 +12,13 @@ class Solution:
         curr_cnt = 0
         for i in range(k):
             if s[i] in vowels: curr_cnt += 1
+        if curr_cnt == k: return k  # optimization
         max_cnt = curr_cnt
         for i in range(k, len(s)):
             if s[i-k] in vowels: curr_cnt -= 1
             if s[i] in vowels: curr_cnt += 1
             max_cnt = max(max_cnt, curr_cnt)
+            if max_cnt == k: return k  # optimization
         return max_cnt
 
 sln = Solution()

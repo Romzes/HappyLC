@@ -8,7 +8,7 @@
 
 class Solution:
     def maxVowels(self, s, k):
-        vowels = set(['a', 'e', 'i', 'o', 'u'])
+        vowels = set('aeiou')
         curr_cnt = 0
         for i in range(k):
             if s[i] in vowels: curr_cnt += 1

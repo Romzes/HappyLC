@@ -14,11 +14,11 @@ class Solution:
         i = 0; j = len(nums)-1; sum = 0; mod = 10**9+7
         while i <= j:
             if nums[i] + nums[j] <= target:
-                sum = (sum + 2**(j-i)) % mod
+                sum += pow(2, j-i, mod)
                 i += 1
             else:
                 j -= 1
-        return sum
+        return sum % mod
 
 sln = Solution()
 print(sln.numSubseq(nums=[3,5,6,7], target=9))

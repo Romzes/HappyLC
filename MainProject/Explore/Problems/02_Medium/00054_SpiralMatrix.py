@@ -8,14 +8,12 @@ class Solution:
         for k in range(cnt):
             res[k] = matrix[i][j]
             matrix[i][j] = float('inf')
-            v = vectors[vi]
-            i1, j1 = i + v[0], j + v[1]
+            i1, j1 = i + vectors[vi][0], j + vectors[vi][1]
             if 0 <= i1 < m and 0 <= j1 < n and matrix[i1][j1] != float('inf'):
                 i, j = i1, j1
             else:
                 vi = (vi + 1) % len(vectors)
-                v = vectors[vi]
-                i, j = i + v[0], j + v[1]
+                i, j = i + vectors[vi][0], j + vectors[vi][1]
         return res
 
 sln = Solution()

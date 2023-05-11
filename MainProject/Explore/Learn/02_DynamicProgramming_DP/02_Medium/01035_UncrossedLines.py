@@ -11,6 +11,15 @@ class Solution:
     def dp_val(self, i, j):
         return self.dp[i][j] if 0 <= i < self.m1 and 0 <= j < self.m2 else 0
 
+class Solution:
+    def maxUncrossedLines(self, nums1, nums2):
+        m1 = len(nums1); m2 = len(nums2); curr = (m2+1)*[0]; next = (m2+1)*[0]
+        for i in range(m1-1, -1, -1):
+            for j in range(m2-1, -1, -1):
+                curr[j] = 1 + next[j+1] if nums1[i] == nums2[j] else max(curr[j+1], next[j])
+            next, curr = curr, next
+        return next[0]
+
 
 sln = Solution()
 print(sln.maxUncrossedLines(nums1=[1,4,2], nums2=[1,2,4]))

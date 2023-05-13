@@ -23,7 +23,7 @@ class Solution:
 ##### Iterative
 class Solution:
     def countGoodStrings(self, low, high, zero, one):
-        dp = (1 + max(zero, one) + high) * [0]; mod = int(10**9 + 7)
+        dp = (high + 1 + max(zero, one)) * [0]; mod = int(10**9 + 7)
         for i in range(high, -1, -1):
             dp[i] = (1 if low <= i else 0) + dp[i+zero] + dp[i+one]
         return dp[0] % mod

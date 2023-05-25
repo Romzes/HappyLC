@@ -4,8 +4,9 @@
 
 class Solution:
     def simplifyPath(self, path):
-        stack = []; parts = [s for s in path.split(sep='/') if s not in ('', '.')]
-        for s in parts:
+        stack = []
+        for s in path.split(sep='/'):
+            if s in ('', '.'): continue
             if s == '..':
                 if stack: stack.pop()
             else: stack.append(s)

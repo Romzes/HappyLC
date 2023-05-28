@@ -16,8 +16,24 @@ class Solution:
             if sum > rooms: rooms = sum
         return rooms
 
+class Solution:
+    def minMeetingRooms(self, intervals):
+        n = len(intervals); beg = n*[None]; end = n*[None]
+        for i, itv in enumerate(intervals): beg[i] = itv[0]; end[i] = itv[1]
+        beg.sort(); end.sort()
+        i = j = 0; sum = 0; rooms = -1
+        while i < n:
+            if beg[i] < end[j]: sum +=1; i += 1
+            elif end[j] < beg[i]: sum -= 1; j += 1
+            else: i += 1; j += 1
+            rooms = max(rooms, sum)
+        return rooms
+
 sln = Solution()
 print(sln.minMeetingRooms(intervals=[[0,30],[5,10],[15,20]]))
 
 sln = Solution()
 print(sln.minMeetingRooms(intervals=[[7,10],[2,4]]))
+
+sln = Solution()
+print(sln.minMeetingRooms(intervals=[[0,20],[5,20],[15,20]]))

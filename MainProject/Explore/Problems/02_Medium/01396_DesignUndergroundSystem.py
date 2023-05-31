@@ -53,9 +53,7 @@ class UndergroundSystem:
         check = self.checkins.pop(id)
         stat_key = (check[0], stationName)
         stat = self.stats.get(stat_key)
-        if stat is None:
-            stat = [0, 0, 0]
-            self.stats[stat_key] = stat
+        if stat is None: stat = self.stats[stat_key] = [0, 0, 0]
         stat[0] += 1
         stat[1] += t - check[1]
         stat[2] = stat[1] / stat[0]

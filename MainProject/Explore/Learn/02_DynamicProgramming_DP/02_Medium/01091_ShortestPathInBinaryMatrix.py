@@ -26,6 +26,28 @@ class Solution:
             level, cells = level + 1, next_cells
         return -1
 
+from collections import deque
+
+class Solution:
+    def shortestPathBinaryMatrix(self, grid):
+        if grid[-1][-1] != 0: return -1
+        M = len(grid); N = len(grid[0])  # grid = M x N
+        if M*N == 1: return 1
+        dirs = [(1,0), (1,1), (0,1), (-1,1), (-1,0), (-1,-1), (0,-1), (1,-1)]
+        level = 1; cells = deque([(M-1, N-1)]); grid[M-1][N-1] = 2
+        while cells:
+            for _ in range(len(cells)):
+                r, c = cells.popleft()
+                for dr, dc in dirs:
+                    r1, c1 = r+dr, c+dc
+                    if r1 < 0 or r1 >= M or c1 < 0 or c1 >= N: continue
+                    if grid[r1][c1] != 0: continue
+                    if r1 == 0 and c1 == 0: return level + 1
+                    grid[r1][c1] = 2
+                    cells.append((r1, c1))
+            level += 1
+        return -1
+
 sln = Solution()
 grid = [
     [0,1],

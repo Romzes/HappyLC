@@ -6,6 +6,16 @@
 # He will inform his direct subordinates, and they will inform their subordinates, and so on until all employees know about the urgent news.
 # The i-th employee needs informTime[i] minutes to inform all of his direct subordinates (i.e., After informTime[i] minutes, all his direct subordinates can start spreading the news).
 # Return the number of minutes needed to inform all the employees about the urgent news.
+# Constraints:
+#   1 <= n <= 105
+#   0 <= headID < n
+#   manager.length == n
+#   0 <= manager[i] < n
+#   manager[headID] == -1
+#   informTime.length == n
+#   0 <= informTime[i] <= 1000
+#   informTime[i] == 0 if employee i has no subordinates.
+#   It is guaranteed that all the employees can be informed.
 
 class Solution:
     def numOfMinutes(self, n, headID, manager, informTime):
@@ -24,6 +34,18 @@ class Solution:
 
         return calc_minutes(headID)
 
+class Solution:
+    def numOfMinutes(self, n, headID, manager, informTime):
+        if n <= 1: return 0
+        T = n * [0]
+        def calc_time(i):
+            if T[i] != 0: return T[i]
+            T[i] = informTime[i] + calc_time(manager[i]) if i != headID else informTime[i]
+            return T[i]
+        mx = 0
+        for i, t in enumerate(informTime):
+            if t == 0 and T[manager[i]] == 0: mx = max(mx, calc_time(manager[i]))
+        return mx
 
 sln = Solution()
 print(sln.numOfMinutes(n=1, headID=0, manager=[-1], informTime=[0]))

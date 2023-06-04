@@ -39,8 +39,7 @@ class Solution:
         if n <= 1: return 0
         T = n * [0]; ans = T[headID] = informTime[headID]
         def calc_time(i):
-            if T[i] != 0: return T[i]
-            T[i] = informTime[i] + calc_time(manager[i])
+            if T[i] == 0: T[i] = informTime[i] + calc_time(manager[i])
             return T[i]
 
         for i, t in enumerate(informTime):

@@ -37,15 +37,15 @@ class Solution:
 class Solution:
     def numOfMinutes(self, n, headID, manager, informTime):
         if n <= 1: return 0
-        T = n * [0]
+        T = n * [0]; ans = T[headID] = informTime[headID]
         def calc_time(i):
             if T[i] != 0: return T[i]
-            T[i] = informTime[i] + calc_time(manager[i]) if i != headID else informTime[i]
+            T[i] = informTime[i] + calc_time(manager[i])
             return T[i]
-        mx = 0
+
         for i, t in enumerate(informTime):
-            if t == 0 and T[manager[i]] == 0: mx = max(mx, calc_time(manager[i]))
-        return mx
+            if t == 0 and T[manager[i]] == 0: ans = max(ans, calc_time(manager[i]))
+        return ans
 
 sln = Solution()
 print(sln.numOfMinutes(n=1, headID=0, manager=[-1], informTime=[0]))

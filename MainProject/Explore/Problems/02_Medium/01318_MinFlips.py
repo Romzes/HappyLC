@@ -13,7 +13,7 @@ class Solution:
             cm = c & mask
             if cm != (d & mask):
                 if cm: flp += 1
-                else: flp += 2 if (a & mask) & (b & mask) else 1
+                else: flp += 2 if a & b & mask else 1
             mask <<= 1
         return flp
 

@@ -12,7 +12,7 @@ class Solution:
         while mask <= mx:
             cm = c & mask
             if cm != (d & mask):
-                flp += 2 if (cm == 0 and (a & mask) & (b & mask)) else 1
+                flp += 2 if cm == 0 and (a & mask) & (b & mask) else 1
             mask <<= 1
         return flp
 

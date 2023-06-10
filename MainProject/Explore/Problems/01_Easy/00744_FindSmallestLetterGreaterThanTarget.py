@@ -8,7 +8,7 @@ class Solution:
     def nextGreatestLetter(self, letters, target):
         ans = ''; l = 0; r = len(letters)-1
         while l <= r:
-            m = int((l + r)/2); v = letters[m]
+            m = (l + r)//2; v = letters[m]
             if v <= target: l = m+1
             else: ans = v; r = m-1
         return ans if ans != '' else letters[0]

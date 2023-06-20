@@ -19,11 +19,24 @@ class Solution:
         s = 0
         for i in range(m): s += nums[i]
         avgs[k] = s // m
-        j1 = 0; j2 = m
+        j1 = 0; j2 = m  # two pointers
         for i in range(k+1, n-k):
             s += nums[j2] - nums[j1]
             avgs[i] = s // m
             j1 += 1; j2 += 1
+        return avgs
+
+class Solution:
+    def getAverages(self, nums, k):
+        if k == 0: return nums
+        n = len(nums); avgs = n*[-1]; m=2*k+1
+        if n < m: return avgs
+        s = 0
+        for i in range(m): s += nums[i]
+        avgs[k] = s // m
+        for i in range(k+1, n-k):
+            s += nums[i+k] - nums[i-k-1]
+            avgs[i] = s // m
         return avgs
 
 sln = Solution()

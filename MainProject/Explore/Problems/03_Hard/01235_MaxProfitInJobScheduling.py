@@ -13,13 +13,12 @@ Constraints:
 import bisect
 class Solution:
     def jobScheduling(self, startTime, endTime, profit):
-        arr = [(startTime[i], endTime[i], profit[i]) for i in range(len(startTime))]
-        arr.sort(key=lambda tpl: tpl[1])
-        print(arr)
+        jobs = sorted(zip(startTime, endTime, profit), key=lambda tpl: tpl[1])  # = list[tuple]
+        # print(jobs)
         profit = []  # [[end_time, max_profit]] max_profit для всех заданий, у которых время завершения <= endTime
-        for tpl in arr:
+        for tpl in jobs:
             if len(profit) == 0 or profit[-1][0] < tpl[1]: profit.append([tpl[1], 0])
-        for tpl in arr:
+        for tpl in jobs:
             i = bisect.bisect_left(profit, tpl[0], key=lambda t: t[0])
             if profit[i][0] == tpl[0]: p = profit[i][1] + tpl[2]
             elif i == 0: p = tpl[2]
@@ -28,6 +27,20 @@ class Solution:
             if k > 0: p = max(p, profit[k-1][1])
             profit[k][1] = max(profit[k][1], p)
         return profit[-1][1]
+
+class Solution:
+    def jobScheduling(self, startTime, endTime, profit):
+        jobs = sorted(zip(startTime, endTime, profit), key=lambda tpl: tpl[1])  # = list[tuple]
+        # print(jobs)
+        end_times = [tpl[1] for tpl in jobs]  # asc sorted
+        profit = len(end_times) * [0]  # profit[i] <= profit[i+1]
+        profit[0] = jobs[0][2]
+        for i in range(1, len(jobs)):
+            s, e, p = jobs[i]
+            profit[i] = profit[i-1]
+            j = bisect.bisect_right(end_times, s)
+            profit[i] = max(profit[i], p if j == 0 else p + profit[j-1])
+        return profit[-1]
 
 
 sln = Solution()

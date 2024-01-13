@@ -27,7 +27,6 @@ class Solution:
             else: cnt.pop(c)
         return steps
 
-### мой выбор
 class Solution:
     def minSteps(self, s: str, t: str) -> int:
         steps = 0; cnt = {}
@@ -35,6 +34,25 @@ class Solution:
         for c in t:
             cnt[c] = cnt.get(c, 0) - 1
             if cnt[c] < 0: steps += 1
+        return steps
+
+class Solution:
+    def minSteps(self, s: str, t: str) -> int:
+        steps = 0; s_cnt = {}; t_cnt = {}
+        for c in s: s_cnt[c] = s_cnt.get(c, 0) + 1
+        for c in t: t_cnt[c] = t_cnt.get(c, 0) + 1
+        for c, n in s_cnt.items():
+            d = n - t_cnt.get(c, 0)
+            if d > 0: steps += d
+        return steps
+
+from collections import Counter
+class Solution:
+    def minSteps(self, s: str, t: str) -> int:
+        steps = 0; s_cnt = Counter(s); t_cnt = Counter(t)
+        for c, n in s_cnt.items():
+            d = n - t_cnt.get(c, 0)
+            if d > 0: steps += d
         return steps
 
 sln = Solution()

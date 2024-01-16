@@ -22,6 +22,13 @@ class Solution:
             dp2[i] = (k-1) * dp1[i-1]
         return (k**2-k) * dp1[-1] + k * dp2[-1]
 
+class Solution:
+    def numWays(self, n: int, k: int) -> int:
+        if n <= 2: return k**n
+        dp1, dp2 = k, k-1
+        for i in range(n-3): dp1, dp2 = (k-1) * dp1 + dp2, (k-1) * dp1
+        return (k**2-k) * dp1 + k * dp2
+
 sln = Solution()
 print(sln.numWays(n=3, k=2))
 

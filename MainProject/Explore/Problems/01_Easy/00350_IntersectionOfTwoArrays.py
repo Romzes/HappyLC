@@ -4,13 +4,25 @@
 
 class Solution:
     def intersect(self, nums1, nums2):
-        d1 = {}; d2 = {}
+        d1 = {}; d2 = {}  # два словаря, но можно использовать один словарь
         for v in nums1: d1[v] = d1.get(v, 0) + 1
         for v in nums2: d2[v] = d2.get(v, 0) + 1
         res = []
         for v, c1 in d1.items():
             c2 = d2.get(v)
             if c2: res.extend(min(c1, c2)*[v])
+        return res
+
+class Solution:
+    def intersect(self, nums1, nums2):
+        d1 = {}  # один словарь
+        for v in nums1: d1[v] = d1.get(v, 0) + 1
+        res = []
+        for v in nums2:
+            c1 = d1.get(v)
+            if c1:
+                res.append(v)
+                d1[v] = c1-1
         return res
 
 sln = Solution()

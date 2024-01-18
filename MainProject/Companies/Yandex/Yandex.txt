@@ -1,10 +1,13 @@
 https://habr.com/ru/articles/550088/
-LeetCode  350 (Easy)   Intersection of Two Arrays II https://leetcode.com/problems/intersection-of-two-arrays-ii/description
-LeetCode  443 (Medium) String Compression https://leetcode.com/problems/string-compression/description
-LeetCode  228 (Easy)   Summary Ranges https://leetcode.com/problems/summary-ranges/description
-LeetCode
-LeetCode  253 (Medium) Meeting Rooms II https://leetcode.com/problems/meeting-rooms-ii/description
-LeetCode   49 (Medium) Group Anagrams https://leetcode.com/problems/group-anagrams/description
-LeetCode   56 (Medium) Merge Intervals https://leetcode.com/problems/merge-intervals/description
+Задача  1) LeetCode  350 (Easy)   Intersection of Two Arrays II https://leetcode.com/problems/intersection-of-two-arrays-ii/description
+Задача  2) LeetCode  443 (Medium) String Compression https://leetcode.com/problems/string-compression/description
+Задача  3) LeetCode  228 (Easy)   Summary Ranges https://leetcode.com/problems/summary-ranges/description
+Задача  4) LeetCode 1493 (Medium) Longest Subarray of 1's After Deleting One Element https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/description
+Задача  5) LeetCode  253 (Medium) Meeting Rooms II https://leetcode.com/problems/meeting-rooms-ii/description
+Задача  6) LeetCode   49 (Medium) Group Anagrams https://leetcode.com/problems/group-anagrams/description
+Задача  7) LeetCode   56 (Medium) Merge Intervals https://leetcode.com/problems/merge-intervals/description
+Задача  8) LeetCode Дан массив точек с целочисленными координатами (x, y). Определить, существует ли вертикальная прямая, делящая точки на 2 симметричных относительно этой прямой множества.
+Задача  9) LeetCode  161 (Medium) One Edit Distance https://leetcode.com/problems/one-edit-distance/description отличие: есть insert
+Задача 10) LeetCode  325 (Medium) Maximum Size Subarray Sum Equals k https://leetcode.com/problems/maximum-size-subarray-sum-equals-k
 
 

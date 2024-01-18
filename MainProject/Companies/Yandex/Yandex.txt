@@ -1,5 +1,10 @@
 https://habr.com/ru/articles/550088/
-LeetCode 350. (Easy) Intersection of Two Arrays II https://leetcode.com/problems/intersection-of-two-arrays-ii/description
-LeetCode 443. (Medium) String Compression https://leetcode.com/problems/string-compression/description
-LeetCode 228. (Easy) Summary Ranges https://leetcode.com/problems/summary-ranges/description
-LeetCode 253. (Medium) Meeting Rooms II https://leetcode.com/problems/meeting-rooms-ii/description/
+LeetCode  350 (Easy)   Intersection of Two Arrays II https://leetcode.com/problems/intersection-of-two-arrays-ii/description
+LeetCode  443 (Medium) String Compression https://leetcode.com/problems/string-compression/description
+LeetCode  228 (Easy)   Summary Ranges https://leetcode.com/problems/summary-ranges/description
+LeetCode
+LeetCode  253 (Medium) Meeting Rooms II https://leetcode.com/problems/meeting-rooms-ii/description
+LeetCode   49 (Medium) Group Anagrams https://leetcode.com/problems/group-anagrams/description
+LeetCode   56 (Medium) Merge Intervals https://leetcode.com/problems/merge-intervals/description
+
+

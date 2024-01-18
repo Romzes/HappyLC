@@ -43,7 +43,7 @@ class Solution:
             if v == 0:
                 lng1 = i - i0 - 1
                 i0 = i
-        if max_lng > 0 and i0 == -1: max_lng -= 1
+        if i0 == -1: max_lng -= 1
         return max_lng
 
 sln = Solution()

@@ -25,7 +25,7 @@ class Solution:
         for i in range(n-2, -1, -1):
             row1, row2 = matrix[i], matrix[i+1]
             row1[0] += min(row2[0], row2[1])
-            row1[n-1] += min(row2[n-2], row2[-1])
+            row1[-1] += min(row2[-2], row2[-1])
             for j in range(1, n-1):
                 row1[j] += min(row2[j-1], row2[j], row2[j+1])
         return min(matrix[0])

@@ -8,16 +8,27 @@ Constraints:
   2 <= nums.length <= 10^4
   1 <= nums[i] <= 10^4
 """
-
 from typing import List
+
 class Solution:
     def findErrorNums(self, nums: List[int]) -> List[int]:
+        # память = O(1)
         res = [None, None]
         for i in range(len(nums)):
             while nums[i] > 0:
                 j = nums[i]-1
                 nums[i], nums[j] = nums[j], -nums[i]
             if i+1 != -nums[i]: res[0], res[1] = -nums[i], i+1
+        return res
+
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        n = len(nums); arr = n*[0]; res = [None, None]
+        for v in nums:
+            i = v-1
+            arr[i] += 1
+            if arr[i] == 2: res[0] = v
+        res[1] = arr.index(0) + 1
         return res
 
 sln = Solution()

@@ -13,8 +13,23 @@ Constraints:
   0 <= startColumn < n
 """
 
-class Solution:
+from functools import cache
+class Solution1:
     def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
+        # Runtime = 55 ms , Beats 100.00% of users with Python3
+        # Memory = 22.54 MB , Beats 35.26% of users with Python3
+        @cache
+        def rec(i, j, maxMove):
+            if i == -1 or i == m or j == -1 or j == n: return 1
+            if maxMove == 0: return 0
+            maxMove -= 1
+            return rec(i-1, j, maxMove) + rec(i+1, j, maxMove) + rec(i, j-1, maxMove) + rec(i, j+1, maxMove)
+        return rec(startRow, startColumn, maxMove) % (10**9 + 7)
+
+class Solution2:
+    def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
+        # Runtime = 81 ms , Beats 80.92% of users with Python3
+        # Memory = 16.94 MB , Beats 89.88% of users with Python3
         if maxMove == 0: return 0
         if maxMove == 1: return (startRow == 0) + (startRow == m-1) + (startColumn == 0) + (startColumn == n-1)
         b1 = self.create_board(m, n); b2 = self.create_board(m, n)
@@ -33,16 +48,31 @@ class Solution:
         for i in range(m+2): b[i][0] = b[i][-1] = 1  # 2 крайних столбца
         return b
 
-from functools import cache
-class Solution:
+class Solution3:
     def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
-        @cache
-        def rec(i, j, maxMove):
-            if i == -1 or i == m or j == -1 or j == n: return 1
-            if maxMove == 0: return 0
-            maxMove -= 1
-            return rec(i-1, j, maxMove) + rec(i+1, j, maxMove) + rec(i, j-1, maxMove) + rec(i, j+1, maxMove)
-        return rec(startRow, startColumn, maxMove) % (10**9 + 7)
+        # Runtime = 67 ms , Beats 97.11% of users with Python3
+        # Memory = 16.96 MB , Beats 89.88% of users with Python3
+        if maxMove == 0: return 0
+        if maxMove == 1: return (startRow == 0) + (startRow == m-1) + (startColumn == 0) + (startColumn == n-1)
+        b1 = self.create_board(m, n); b2 = self.create_board(m, n)
+        i1, i2 = startRow + 1 - maxMove, startRow + 1 + maxMove
+        j1, j2 = startColumn + 1 - maxMove, startColumn + 1 + maxMove
+        for k in range(maxMove):
+            i1 += 1; i2 -= 1; j1 += 1; j2 -= 1;
+            for i in range(max(1, i1), min(m, i2)+1):
+                for j in range(max(1, j1), min(n, j2)+1):
+                    b2[i][j] = b1[i-1][j] + b1[i+1][j] + b1[i][j-1] + b1[i][j+1]
+            b1, b2 = b2, b1
+        return b1[startRow+1][startColumn+1] % (10**9 + 7)
+
+    def create_board(self, m, n):
+        b = [(n+2)*[0] for _ in range(m+2)]
+        for j in range(n+2): b[0][j] = b[-1][j] = 1  # 2 крайних строки
+        for i in range(m+2): b[i][0] = b[i][-1] = 1  # 2 крайних столбца
+        return b
+
+
+Solution = Solution3
 
 sln = Solution()
 print(sln.findPaths(m=2, n=2, maxMove=2, startRow=0, startColumn=0))

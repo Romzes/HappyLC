@@ -50,9 +50,11 @@ class Solution2:
 
 class Solution3:
     def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
-        # Runtime = 67 ms , Beats 97.11% of users with Python3
-        # Memory = 16.96 MB , Beats 89.88% of users with Python3
-        if maxMove == 0: return 0
+        # Runtime = 62 ms , Beats 99.13% of users with Python3
+        # Memory = 16.93 MB , Beats 91.04% of users with Python3
+        if startRow - maxMove > 0 and startRow + maxMove < m and \
+                startColumn - maxMove > 0 and startColumn + maxMove < n:
+            return 0
         if maxMove == 1: return (startRow == 0) + (startRow == m-1) + (startColumn == 0) + (startColumn == n-1)
         b1 = self.create_board(m, n); b2 = self.create_board(m, n)
         i1, i2 = startRow + 1 - maxMove, startRow + 1 + maxMove

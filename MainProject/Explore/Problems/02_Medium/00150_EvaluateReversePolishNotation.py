@@ -16,16 +16,15 @@ Constraints:
 from typing import List
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
-        stack = []; opers = set(['+', '-', '*', '/']); i = 0
+        opers = {'+': lambda x, y: x+y, '-': lambda x, y: x-y, '*': lambda x, y: x*y, '/': lambda x, y: int(x / y)}
+        stack = []
         for t in tokens:
-            if t not in opers:
-                stack.append(int(t))
-            else:
+            f = opers.get(t)
+            if f:
                 y, x = stack.pop(), stack.pop()
-                if t == '+': stack.append(x + y)
-                if t == '-': stack.append(x - y)
-                if t == '*': stack.append(x * y)
-                if t == '/': stack.append(int(x / y))
+                stack.append(f(x, y))
+            else:
+                stack.append(int(t))
         return stack[-1]
 
 sln = Solution()

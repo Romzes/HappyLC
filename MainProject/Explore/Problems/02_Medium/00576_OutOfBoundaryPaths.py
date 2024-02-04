@@ -13,11 +13,11 @@ Constraints:
   0 <= startColumn < n
 """
 
+# Runtime = 55 ms , Beats 100.00% of users with Python3
+# Memory = 22.54 MB , Beats 35.26% of users with Python3
 from functools import cache
 class Solution1:
     def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
-        # Runtime = 55 ms , Beats 100.00% of users with Python3
-        # Memory = 22.54 MB , Beats 35.26% of users with Python3
         @cache
         def rec(i, j, maxMove):
             if i == -1 or i == m or j == -1 or j == n: return 1
@@ -26,10 +26,10 @@ class Solution1:
             return rec(i-1, j, maxMove) + rec(i+1, j, maxMove) + rec(i, j-1, maxMove) + rec(i, j+1, maxMove)
         return rec(startRow, startColumn, maxMove) % (10**9 + 7)
 
+# Runtime = 81 ms , Beats 80.92% of users with Python3
+# Memory = 16.94 MB , Beats 89.88% of users with Python3
 class Solution2:
     def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
-        # Runtime = 81 ms , Beats 80.92% of users with Python3
-        # Memory = 16.94 MB , Beats 89.88% of users with Python3
         if maxMove == 0: return 0
         if maxMove == 1: return (startRow == 0) + (startRow == m-1) + (startColumn == 0) + (startColumn == n-1)
         b1 = self.create_board(m, n); b2 = self.create_board(m, n)
@@ -48,10 +48,10 @@ class Solution2:
         for i in range(m+2): b[i][0] = b[i][-1] = 1  # 2 крайних столбца
         return b
 
+# Runtime = 62 ms , Beats 99.13% of users with Python3
+# Memory = 16.93 MB , Beats 91.04% of users with Python3
 class Solution3:
     def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
-        # Runtime = 62 ms , Beats 99.13% of users with Python3
-        # Memory = 16.93 MB , Beats 91.04% of users with Python3
         if startRow - maxMove > 0 and startRow + maxMove < m and \
                 startColumn - maxMove > 0 and startColumn + maxMove < n:
             return 0

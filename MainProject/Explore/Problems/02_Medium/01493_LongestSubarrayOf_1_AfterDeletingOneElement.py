@@ -8,12 +8,11 @@ Constraints:
   nums[i] is either 0 or 1.
 
 """
-
 from typing import List
 
+# Первое ТУПОЕ решение Runtime = 452 ms , Beats 87.75% of users with Python3
 class Solution:
     def longestSubarray(self, nums: List[int]) -> int:
-        # Первое ТУПОЕ решение Runtime = 452 ms , Beats 87.75% of users with Python3
         max_lng = 0
         i0 = j1 = j2 = None
         for i, v in enumerate(nums):

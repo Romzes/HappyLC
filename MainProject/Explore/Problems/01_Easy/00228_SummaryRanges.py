@@ -46,9 +46,9 @@ class Solution:
     def rng(self, u1, u2):
         return f'{u1}->{u2}' if u1 < u2 else str(u1)
 
+# Runtime = 23 ms , Beats 99.51% of users with Python3
 class Solution:
     def summaryRanges(self, nums: List[int]) -> List[str]:
-        # Runtime = 23 ms , Beats 99.51% of users with Python3
         if not nums: return []
         # nums.sort()
         ranges = []

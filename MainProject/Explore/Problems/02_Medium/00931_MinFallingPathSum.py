@@ -18,9 +18,9 @@ class Solution:
                 row1[j] += min(row2[k] for k in range(max(j-1, 0), min(j+2, n)))
         return min(matrix[0])
 
+# Runtime = 93 ms , Beats 100.00% of users with Python3
 class Solution:
     def minFallingPathSum(self, matrix: List[List[int]]) -> int:
-        # Runtime = 93 ms , Beats 100.00% of users with Python3
         n = len(matrix)
         for i in range(n-2, -1, -1):
             row1, row2 = matrix[i], matrix[i+1]

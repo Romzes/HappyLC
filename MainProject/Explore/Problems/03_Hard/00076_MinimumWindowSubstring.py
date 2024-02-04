@@ -11,10 +11,11 @@ Constraints:
   s and t consist of uppercase and lowercase English letters.
 """
 from collections import deque
+
+# Runtime = 71 ms Beats 98.2% of users with Python3
+# Memory = 18.74 MB Beats 5.24% of users with Python3
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        # Runtime = 74 ms Beats 96.89% of users with Python3
-        # Memory = 18.83 MB Beats 5.24% of users with Python3
         counter = {}; cnt = len(t)
         for c in t:
             if c not in counter: counter[c] = [0, 0]
@@ -29,12 +30,39 @@ class Solution:
             if item[0] >= item[1]:
                 cnt -= 1
                 while cnt == 0:
-                    lng = i - dq[0] + 1
-                    if lng < min_lng: i1, i2, min_lng = dq[0], i, lng
                     j = dq.popleft()
                     item = counter[s[j]]
                     item[1] -= 1
                     if item[0] > item[1]: cnt += 1
+                    lng = i - j + 1
+                    if lng < min_lng: i1, i2, min_lng = j, i, lng
+        return s[i1:(i2+1)] if i1 is not None else ''
+
+
+# Runtime = 58 ms Beats 99.94% of users with Python3
+# Memory = 17.13 MB Beats 90.66% of users with Python3
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        counter = {}; cnt = len(t)
+        for c in t:
+            if c not in counter: counter[c] = [0, 0]
+            counter[c][0] += 1
+        i1 = i2 = None; min_lng = float('+inf')
+        j = -1
+        for i, c in enumerate(s):
+            item = counter.get(c)
+            if not item: continue
+            item[1] += 1
+            if item[0] >= item[1]:
+                cnt -= 1
+                while cnt == 0:
+                    j += 1
+                    item = counter.get(s[j])
+                    if not item: continue
+                    item[1] -= 1
+                    if item[0] > item[1]: cnt += 1
+                    lng = i - j + 1
+                    if lng < min_lng: i1, i2, min_lng = j, i, lng
         return s[i1:(i2+1)] if i1 is not None else ''
 
 sln = Solution()

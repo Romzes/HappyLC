@@ -14,10 +14,10 @@ class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val, self.left, self.right = val, left, right
 
+# Runtime = 47 ms ; Beats 18.61% of users with Python3
+# Memory = 17.42 MB ; Beats 21.26% of users with Python3
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        # Runtime = 47 ms ; Beats 18.61% of users with Python3
-        # Memory = 17.42 MB ; Beats 21.26% of users with Python3
         if not root: return []
         res = []; levels = [root]
         while levels:
@@ -29,10 +29,10 @@ class Solution:
             levels = next_levels
         return res
 
+# Runtime = 30 ms ; Beats 95.30% of users with Python3
+# Memory = 17.08 MB ; Beats 51.09% of users with Python3
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        # Runtime = 30 ms ; Beats 95.30% of users with Python3
-        # Memory = 17.08 MB ; Beats 51.09% of users with Python3
         if not root: return []
         res = []; dq = deque(); dq.append(root)
         while dq:

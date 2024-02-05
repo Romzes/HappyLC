@@ -16,6 +16,22 @@ class Solution:
         for i, v in enumerate(nums):
             if v == 1:
                 sum1 += 1
+            else:
+                max_sum1 = max(max_sum1, sum1)
+                i0 = i
+                prev1 = sum1 = sum1 - prev1
+        max_sum1 = max(max_sum1, sum1)
+        if i0 is None: max_sum1 -= 1  # нулей нет в массиве nums => нужно обязательно удалить одну единицу
+        return max_sum1
+
+### ЭТАЛОННОЕ РЕШЕНИЕ ДЛЯ СОБЕСА
+class Solution:
+    def longestSubarray(self, nums: List[int]) -> int:
+        i0 = None  # индекс последнего 0
+        max_sum1 = prev1 = sum1 = 0  # ...0111011... => prev1 = 3, sum1 = 5
+        for i, v in enumerate(nums):
+            if v == 1:
+                sum1 += 1
                 max_sum1 = max(max_sum1, sum1)
             else:
                 i0 = i

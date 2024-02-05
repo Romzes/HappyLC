@@ -6,44 +6,22 @@ Return 0 if there is no such subarray.
 Constraints:
   1 <= nums.length <= 10^5
   nums[i] is either 0 or 1.
-
 """
 from typing import List
 
-# Первое ТУПОЕ решение Runtime = 452 ms , Beats 87.75% of users with Python3
 class Solution:
     def longestSubarray(self, nums: List[int]) -> int:
-        max_lng = 0
-        i0 = j1 = j2 = None
+        i0 = None  # индекс последнего 0
+        max_sum1 = prev1 = sum1 = 0  # ...0111011... => prev1 = 3, sum1 = 5
         for i, v in enumerate(nums):
             if v == 1:
-                if j1 is None: j1 = i
-                j2 = i
-                lng = j2 - j1 + 1
-                if i0 is not None and j1 < i0 < j2: lng -= 1
-                max_lng = max(max_lng, lng)
-            elif v == 0 and i0 is None:
-                i0 = i
+                sum1 += 1
+                max_sum1 = max(max_sum1, sum1)
             else:
-                j1, j2 = (i0+1, i-1) if i0 < i-1 else (None, None)
                 i0 = i
-        if max_lng > 0 and i0 is None: max_lng -= 1
-        return max_lng
-
-class Solution:
-    def longestSubarray(self, nums: List[int]) -> int:
-        i0 = -1   # индекс последнего 0
-        lng1 = 0  # кол-во единиц до i0 и на отрезке [i0; i] ; lng1 = 3 для  ... , 0, 1, 0 i0, 1, 1 i, ...
-        max_lng = 0
-        for i, v in enumerate(nums):
-            if v == 1:
-                lng1 += 1
-                max_lng = max(max_lng, lng1)
-            if v == 0:
-                lng1 = i - i0 - 1
-                i0 = i
-        if i0 == -1: max_lng -= 1
-        return max_lng
+                prev1 = sum1 = sum1 - prev1
+        if i0 is None: max_sum1 -= 1  # нулей нет в массиве nums => нужно обязательно удалить одну единицу
+        return max_sum1
 
 sln = Solution()
 print(sln.longestSubarray(nums=[0,0,0]))

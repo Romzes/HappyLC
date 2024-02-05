@@ -1,13 +1,18 @@
-# Easy 387. First Unique Character in a String
-# Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
-# s consists of only lowercase English letters.
+"""
+387 (Easy) First Unique Character in a String
+Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
+s consists of only lowercase English letters.
+Constraints:
+  1 <= s.length <= 10^5
+  s consists of only lowercase English letters.
+"""
 
 class Solution:
     def firstUniqChar(self, s):
-        lng, stat = len(s), {}
-        for i, c in enumerate(s): stat[c] = i if c not in stat else lng
+        n = len(s); stat = {}
+        for i, c in enumerate(s): stat[c] = i if c not in stat else n
         i = min(stat.values())
-        return -1 if i == lng else i
+        return -1 if i == n else i
 
 sln = Solution()
 print(sln.firstUniqChar(s='leetcode'))

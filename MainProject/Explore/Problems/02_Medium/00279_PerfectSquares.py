@@ -8,20 +8,66 @@ Constraints:
 """
 from collections import OrderedDict
 from functools import cache
+
 class Solution:
     def numSquares(self, n: int) -> int:
         squares = OrderedDict()
-        for k in range(1, int(n**0.5)+1): squares[k**2] = 0
+        for k in range(int(n**0.5), 0, -1): squares[k**2] = None
         @cache
         def rec(m):
             if m in squares: return 1
             mn = float('+inf')
             for k2 in squares:
                 d = m - k2
-                if d <= 0: break
+                if d < 0: continue
                 mn = min(mn, rec(d))
             return 1 + mn
         return rec(n)
+
+class Solution:
+    def numSquares(self, n: int) -> int:
+        sqrt_n = int(n**0.5)
+        if n == sqrt_n**2: return 1
+        self.squares = OrderedDict()
+        for k in range(sqrt_n, 0, -1): self.squares[k**2] = None
+        self.dp = {k2: 1 for k2 in self.squares}
+        self.res = float('+inf')
+        self.n = n
+        self.rec(m=n, cnt=0)
+        return self.res
+
+    def rec(self, m, cnt):
+        if m in self.dp: return self.dp[m]
+        if self.res <= cnt: return float('+inf')
+        mn = float('+inf')
+        for k2 in self.squares:
+            d = m - k2
+            if d < 0: continue
+            mn = min(mn, 1 + self.rec(d, cnt+1))
+            if m == self.n and mn < float('+inf'): self.res = min(self.res, mn)
+        if mn < float('+inf'): self.dp[m] = mn
+        return mn
+
+class Solution:
+    def numSquares(self, n: int) -> int:
+        sqrt_n = int(n**0.5)
+        if n == sqrt_n**2: return 1
+        squares = OrderedDict()
+        for k in range(1, sqrt_n+1): squares[k**2] = None
+        curr_level = set([n]); cnt = 0
+        while curr_level:
+            cnt += 1
+            next_level = set()
+            for v in curr_level:
+                if v in squares: return cnt
+                for k2 in squares:
+                    d = v - k2
+                    if d > 0: next_level.add(d)
+                    else: break
+            curr_level = next_level
+
+sln = Solution()
+print(sln.numSquares(n=1))
 
 sln = Solution()
 print(sln.numSquares(n=12))

@@ -55,7 +55,7 @@ class Solution:
         squares = OrderedDict()
         for k in range(1, sqrt_n+1): squares[k**2] = None
         curr_level = set([n]); cnt = 0
-        while curr_level:
+        while True:
             cnt += 1
             next_level = set()
             for v in curr_level:

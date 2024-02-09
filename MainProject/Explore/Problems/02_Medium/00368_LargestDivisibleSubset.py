@@ -37,8 +37,8 @@ class Solution:
         res.reverse()
         return res
 
-# Runtime 105 ms , Beats 100.00% of users with Python3
-# Memory 16.96 MB , Beats 65.23% of users with Python3
+# Runtime 96 ms , Beats 100.00% of users with Python3
+# Memory 17.12 MB , Beats 57.46% of users with Python3
 class Solution:
     def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
         n = len(nums)
@@ -68,7 +68,7 @@ class Solution:
         while v is not None:
             res.append(v)
             v = dp[v][1]
-        res.reverse()
+        # res.reverse()
         return res
 
 sln = Solution()

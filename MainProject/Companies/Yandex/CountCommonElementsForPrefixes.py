@@ -34,6 +34,22 @@ def calc_nums(arr1, arr2):
         res_arr[i] += cnt
     return res_arr
 
+def calc_nums(arr1, arr2):
+    n = len(arr1)
+    res_arr = n * [0]
+    set1, set2 = {}, {}
+    for i in range(n):
+        v1, v2 = arr1[i], arr2[i]
+        cnt = 0
+        if v1 not in set1 and v1 in set2: cnt += 1
+        if v2 not in stat2: stat2[v2] = i
+        cnt = 0
+        if max(stat1[v1], stat2.get(v1, n)) == i: cnt += 1
+        if v2 != v1 and max(stat2[v2], stat1.get(v2, n)) == i: cnt += 1
+        if i > 0: res_arr[i] += res_arr[i - 1]
+        res_arr[i] += cnt
+    return res_arr
+
 arr1 = [1,1,2,3]
 arr2 = [2,1,3,1]
 print(calc_nums(arr1, arr2))

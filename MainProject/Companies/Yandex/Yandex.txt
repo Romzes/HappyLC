@@ -11,3 +11,9 @@ https://habr.com/ru/articles/550088/
 Задача 10) LeetCode  325 (Medium) Maximum Size Subarray Sum Equals k https://leetcode.com/problems/maximum-size-subarray-sum-equals-k
 
 
+
+https://leetcode.com/company/yandex/discuss?currentPage=1&orderBy=newest_to_oldest&query=
+
+https://leetcode.com/company/yandex/discuss/3305189/Yandex-or-OA-or-Count-common-elements-for-prefixes
+
+

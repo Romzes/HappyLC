@@ -41,6 +41,8 @@ class Solution:
         return pos1[0][N-1]
 
 
+# Runtime 252 ms , Beats 100.00 %of users with Python3
+# Memory 16.74 MB , Beats 100.00% of users with Python3
 class Solution:
     def cherryPickup(self, grid: List[List[int]]) -> int:
         M = len(grid); N = len(grid[0])
@@ -61,8 +63,8 @@ class Solution:
                     mx = 0
                     for s in steps:
                         j1 = i1 + s[0]; j2 = i2 + s[1]
-                        if 0 <= j1 < j2 < N:
-                            mx = max(mx, pos1[j1][j2])
+                        # if 0 <= j1 < j2 < N: mx = max(mx, pos1[j1][j2])
+                        if 0 <= j1 < j2 < N and mx < pos1[j1][j2]: mx = pos1[j1][j2]  # важная оптимизация: убираем max(..)
                     pos2[i1][i2] = grid[m][i1] + grid[m][i2] + mx
             pos1, pos2 = pos2, pos1
         return pos1[0][N-1]

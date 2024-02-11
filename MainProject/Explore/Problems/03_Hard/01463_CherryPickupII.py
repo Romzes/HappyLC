@@ -61,7 +61,7 @@ class Solution:
                     mx = 0
                     for s in steps:
                         j1 = i1 + s[0]; j2 = i2 + s[1]
-                        if 0 <= j1 < N and 0 <= j2 < N and j1 < j2:
+                        if 0 <= j1 < j2 < N:
                             mx = max(mx, pos1[j1][j2])
                     pos2[i1][i2] = grid[m][i1] + grid[m][i2] + mx
             pos1, pos2 = pos2, pos1

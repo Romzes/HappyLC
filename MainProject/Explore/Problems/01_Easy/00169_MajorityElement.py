@@ -11,22 +11,24 @@ Constraints:
 """
 from typing import List
 
-### простое решение через словарь
-class Solution:
-    def majorityElement(self, nums: List[int]) -> int:
-        max_cnt, max_v = 0, None; counter = {}; m = len(nums) // 2
-        for i, v in enumerate(nums):
-            c = counter[v] = counter.get(v, 0) + 1
-            if max_cnt < c:
-                max_cnt, max_v = c, v
-                if max_cnt > m: return max_v
-        return max_v
-
 ### sort сложность = O(n*log(n))
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
         nums.sort()
         return nums[len(nums) // 2]
+
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        m = None; cnt = 0
+        for v in nums:
+            if cnt == 0:
+                m = v
+                cnt += 1
+            else:
+                # cnt > 0 and m != None
+                if v == m: cnt += 1
+                else: cnt -= 1
+        return m
 
 sln = Solution()
 print(sln.majorityElement(nums=[3,2,3]))

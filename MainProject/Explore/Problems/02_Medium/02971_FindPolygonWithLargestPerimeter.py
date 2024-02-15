@@ -18,8 +18,8 @@ class Solution:
         max_p = -1
         s = nums[0] + nums[1]
         for i in range(2, len(nums)):
-            if nums[i] < s: max_p = s + nums[i]
-            s += nums[i]
+            if nums[i] < s: s = max_p = s + nums[i]
+            else: s += nums[i]
         return max_p
 
 sln = Solution()

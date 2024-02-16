@@ -15,6 +15,15 @@ class Solution:
             else: break
         return n
 
+class Solution:
+    def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
+        values = sorted(Counter(arr).values()); n = len(values)
+        for v in values:
+            k -= v
+            if k < 0: break
+            n -= 1
+        return n
+
 sln = Solution()
 print(sln.findLeastNumOfUniqueInts(arr=[5,5,4], k=1))
 

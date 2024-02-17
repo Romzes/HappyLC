@@ -26,7 +26,7 @@ class Solution:
             if len(hq) < ladders:
                 heapq.heappush(hq, d)
             else:
-                bricks -= heapq.heappushpop(hq, d)
+                bricks -= d if ladders == 0 else heapq.heappushpop(hq, d)
                 if bricks < 0: return i-1
         return n-1
 

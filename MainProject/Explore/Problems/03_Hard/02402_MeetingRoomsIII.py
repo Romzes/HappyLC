@@ -1,4 +1,5 @@
 """
+
 You are given an integer n. There are n rooms numbered from 0 to n - 1.
 You are given a 2D integer array meetings where meetings[i] = [starti, endi] means that a meeting will be held during the half-closed time interval [starti, endi).
 All the values of starti are unique.
@@ -25,17 +26,17 @@ class Solution:
         free_rooms = list(range(n))  # list[room]
         work_rooms = []  # list[(end, room)]
         meetings.sort()
-        for mt in meetings:
-            while work_rooms and work_rooms[0][0] <= mt[0]:
+        for mt_beg, mt_end in meetings:
+            while work_rooms and work_rooms[0][0] <= mt_beg:
                 end, room = heapq.heappop(work_rooms)
                 heapq.heappush(free_rooms, room)
             if free_rooms:
                 room = heapq.heappop(free_rooms)
-                end = mt[1]
+                end = mt_end
             else:
                 item = heapq.heappop(work_rooms)
                 room = item[1]
-                end = item[0] + mt[1] - mt[0]
+                end = item[0] + mt_end - mt_beg
             heapq.heappush(work_rooms, (end, room))
             cnt = res[room] = res.get(room, 0) + 1
             if cnt > max_cnt or cnt == max_cnt and room < max_room:

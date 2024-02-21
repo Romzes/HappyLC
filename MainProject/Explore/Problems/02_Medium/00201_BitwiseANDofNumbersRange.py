@@ -5,6 +5,9 @@ return the bitwise AND of all numbers in this range, inclusive.
 Constraints:
   0 <= left <= right <= 2^31 - 1
 """
+
+# Runtime 43 ms , Beats 90.76% of users with Python3
+# Memory 16.60 MB , Beats 81.69% of users with Python3
 class Solution:
     def rangeBitwiseAnd(self, left: int, right: int) -> int:
         if left == 0 or left == right: return left

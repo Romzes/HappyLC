@@ -34,6 +34,8 @@ class Solution:
         ord_map = {c: i for i, c in enumerate(order)}
         return ''.join(sorted(s, key=lambda c: ord_map.get(c, 100)))
 
+# Runtime = 31 ms , Beats 81.50 % of users with Python3
+# Memory = 16.44 MB , Beats 91.47 % of users with Python3
 class Solution:
     def customSortString(self, order: str, s: str) -> str:
         ord_arr = 26 * [100]

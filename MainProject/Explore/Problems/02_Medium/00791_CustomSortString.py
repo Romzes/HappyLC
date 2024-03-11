@@ -11,8 +11,8 @@ Constraints:
   All the characters of order are unique.
 """
 
-# Runtime = 43 ms , Beats 8.63% of users with Python3
-# Memory = 16.57 MB , Beats 61.09% of users with Python3
+# Runtime = 43 ms , Beats 8.63 % of users with Python3
+# Memory = 16.57 MB , Beats 61.09 % of users with Python3
 class Solution:
     def customSortString(self, order: str, s: str) -> str:
         ord_map = {}
@@ -27,12 +27,19 @@ class Solution:
             else: chars.append(c)
         return ''.join(i * c for i, c in arr if i > 0) + ''.join(chars)
 
-# Runtime = 38 ms , Beats 39.07% of users with Python3
-# Memory = 16.45 MB , Beats 91.57% of users with Python3
+# Runtime = 38 ms , Beats 39.07 % of users with Python3
+# Memory = 16.45 MB , Beats 91.57 % of users with Python3
 class Solution:
     def customSortString(self, order: str, s: str) -> str:
         ord_map = {c: i for i, c in enumerate(order)}
         return ''.join(sorted(s, key=lambda c: ord_map.get(c, 100)))
+
+class Solution:
+    def customSortString(self, order: str, s: str) -> str:
+        ord_arr = 26 * [100]
+        ord_a = ord('a')
+        for i, c in enumerate(order): ord_arr[ord(c) - ord_a] = i
+        return ''.join(sorted(s, key=lambda c: ord_arr[ord(c) - ord_a]))
 
 sln = Solution()
 print(sln.customSortString(order='cba', s='abcd'))

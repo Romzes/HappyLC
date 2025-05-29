@@ -14,6 +14,7 @@ Constraints:
 
 from typing import List
 
+# использование дополнительной памяти: массив dp, len(dp) = len(nums)
 class Solution:
     def rob(self, nums: List[int]) -> int:
         m = len(nums)
@@ -24,6 +25,17 @@ class Solution:
         for i in range(2, m):
             dp[i] = max(nums[i] + dp[i-2], dp[i-1])
         return dp[-1]
+
+# без использования дополнительной памяти
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        m = len(nums)
+        if m == 1: return nums[0]
+        a = nums[0]
+        b = max(nums[0], nums[1])
+        for i in range(2, m):
+            a, b = b, max(nums[i] + a, b)
+        return b
 
 
 sln = Solution()

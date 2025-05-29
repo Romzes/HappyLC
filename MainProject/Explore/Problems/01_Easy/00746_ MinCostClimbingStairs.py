@@ -12,6 +12,7 @@ Constraints:
 
 from typing import List
 
+# использование дополнительной памяти: массив dp, len(dp) = len(cost)
 class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
         m = len(cost)
@@ -20,6 +21,14 @@ class Solution:
         for i in range(m-3, -1, -1):
             dp[i] = cost[i] + min(dp[i+1], dp[i+2])
         return min(dp[0], dp[1])
+
+# без использования дополнительной памяти
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        a, b = cost[-2], cost[-1]
+        for i in range(len(cost)-3, -1, -1):
+            a, b = (cost[i] + min(a, b)), a
+        return min(a, b)
 
 
 sln = Solution()

@@ -13,20 +13,6 @@ Constraints:
 
 from typing import List
 
-# Runtime = 7 ms  Beats = 40.3% ; Memory = 17.84 MB  Beats = 34.78%
-class Solution:
-    def partitionLabels(self, s: str) -> List[int]:
-        last = {c: i for i, c in enumerate(s)}
-        res = []
-        j1 = j2 = None
-        for i, c in enumerate(s):
-            if j1 is None: j1 = j2 = i
-            j2 = max(j2, last[c])
-            if i == j2:
-                res.append(j2-j1+1)
-                j1 = j2 = None
-        return res
-
 # Runtime = 3 ms  Beats = 91.03% ; Memory = 17.61 MB  Beats = 84.49%
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
@@ -34,13 +20,27 @@ class Solution:
         last = 26 * [-1]
         for i, c in enumerate(s): last[ord(c)-ord_a] = i
         res = []
-        j1 = j2 = None
+        j1 = j2 = 0  # current part
         for i, c in enumerate(s):
-            if j2 is None: j1 = j2 = i
+            # j1 <= i <= j2
             j2 = max(j2, last[ord(c)-ord_a])
             if i == j2:
                 res.append(j2-j1+1)
-                j1 = j2 = None
+                j1 = j2 = i+1
+        return res
+
+# Runtime = 7 ms  Beats = 40.3% ; Memory = 17.84 MB  Beats = 34.78%
+class Solution:
+    def partitionLabels(self, s: str) -> List[int]:
+        last = {c: i for i, c in enumerate(s)}
+        res = []
+        j1 = j2 = 0  # current part
+        for i, c in enumerate(s):
+            # j1 <= i <= j2
+            j2 = max(j2, last[c])
+            if i == j2:
+                res.append(j2-j1+1)
+                j1 = j2 = i+1
         return res
 
 

@@ -17,18 +17,18 @@ from typing import List
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        k = 1
-        for j in range(1, len(nums)):
-            if nums[j] != nums[j-1]:
-                nums[k] = nums[j]
+        k = 1  # destination index
+        for i in range(1, len(nums)):
+            if nums[i] != nums[i-1]:
+                nums[k] = nums[i]
                 k += 1
         return k
 
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        k = 0
-        for i, a in enumerate(nums):
+        k = 0  # destination index
+        for i in range(len(nums)):
             if i == 0 or nums[i] != nums[i-1]:
                 nums[k] = nums[i]
                 k += 1

@@ -1,3 +1,4 @@
+# 1337 (Easy) The K Weakest Rows in a Matrix
 """
 You are given an m x n binary matrix mat of 1's (representing soldiers) and 0's (representing civilians).
 The soldiers are positioned in front of the civilians.

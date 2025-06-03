@@ -18,7 +18,7 @@ class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         counter = {}
         for a in nums: counter[a] = counter.get(a, 0) + 1
-        hp = []  # heap
+        hp = []  # min-heap
         for a, cnt in counter.items():
             if len(hp) < k:
                 hp.append((cnt, a))

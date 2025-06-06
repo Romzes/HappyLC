@@ -17,6 +17,7 @@ class Solution:
         hp = []  # min-heap
         for a in nums:
             if len(hp) < k:
+                # оптимизация: быстрое добавление в hp первых k элементов
                 hp.append(a)
                 if len(hp) == k: heapq.heapify(hp)
                 continue
@@ -24,9 +25,19 @@ class Solution:
             heapq.heappushpop(hp, a)
         return hp[0]
 
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        hp = []  # min-heap
+        for a in nums:
+            if len(hp) < k:
+                heapq.heappush(hp, a)
+                continue
+            heapq.heappushpop(hp, a)
+        return hp[0]
+
 
 sln = Solution()
-print(sln.findKthLargest(nums=[3,2,1,5,6,4], k=2))
+print(sln.findKthLargest(nums=[3,2,1,5,6,4], k=2))  # output: 5
 
 sln = Solution()
-print(sln.findKthLargest(nums=[3,2,3,1,2,4,5,5,6], k=4))
+print(sln.findKthLargest(nums=[3,2,3,1,2,4,5,5,6], k=4))  # output: 4

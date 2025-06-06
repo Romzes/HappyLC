@@ -21,6 +21,7 @@ class Solution:
         hp = []  # min-heap
         for a, cnt in counter.items():
             if len(hp) < k:
+                # оптимизация: быстрое добавление в hp первых k элементов
                 hp.append((cnt, a))
                 if len(hp) == k: heapq.heapify(hp)
                 continue

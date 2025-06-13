@@ -15,14 +15,11 @@ class Solution:
         for i in range(1, len(s)):
             # s[j,..,i-1] содержит <= k уникальных символов
             last[s[i]] = i
-            if len(last) <= k:
-                res = max(res, i-j+1)
-            else:
+            while len(last) > k:
                 # last[s[i]] = k+1 => j нужно сдвинуть вправо так, чтобы на отрезке s[j,..,i] стало ровно k уникальных символов
-                while j < last[s[j]]: j += 1
-                # j = last[s[j]]
-                last.pop(s[j])
+                if j == last[s[j]]: last.pop(s[j])
                 j += 1
+            res = max(res, i - j + 1)
         return res
 
 sln = Solution()

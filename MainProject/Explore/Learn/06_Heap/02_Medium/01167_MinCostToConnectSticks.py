@@ -19,7 +19,7 @@ class Solution:
     def connectSticks(self, sticks: List[int]) -> int:
         if len(sticks) == 1: return 0
         if len(sticks) == 2: return sticks[0] + sticks[1]
-        sticks.sort()
+        heapq.heapify(sticks)
         cost = 0
         while len(sticks) > 2:
             s1 = heapq.heappop(sticks)
@@ -28,11 +28,11 @@ class Solution:
             heapq.heappushpop(sticks, s)
         return cost + sticks[0] + sticks[1]
 
-# Runtime = 77 ms   Beats=88.61%     Memory=18.69 MB  Beats=85.48%
+# Runtime = 71 ms   Beats=99.53%     Memory=18.94 MB  Beats=26.66%
 class Solution:
     def connectSticks(self, sticks: List[int]) -> int:
         if len(sticks) == 1: return 0
-        sticks.sort()
+        heapq.heapify(sticks)
         cost = 0
         while len(sticks) > 1:
             s1 = heapq.heappop(sticks)

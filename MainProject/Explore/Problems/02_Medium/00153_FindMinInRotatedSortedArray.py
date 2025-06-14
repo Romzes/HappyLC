@@ -15,7 +15,7 @@ Constraints:
   n == nums.length
   1 <= n <= 5000
   -5000 <= nums[i] <= 5000
-  All the integers of nums are unique.
+  All the integers of nums are UNIQUE.
   nums is sorted and rotated between 1 and n times.
 """
 
@@ -24,8 +24,7 @@ from typing import List
 # Runtime = 0 ms  Beats 100.00%  ;  Memory = 18.26 MB  Beats 9.45%
 class Solution:
     def findMin(self, nums: List[int]) -> int:
-        n = len(nums)
-        l, r = 0, n-1
+        l, r = 0, len(nums)-1
         while True:
             if nums[l] <= nums[r]: return nums[l]  # nums[l..r] монотонно возрастает + случай когда l = r
             # выполнено: l < r

@@ -1,7 +1,9 @@
-# Easy 704. Binary Search
-# Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums.
-# If target exists, then return its index. Otherwise, return -1.
-# You must write an algorithm with O(log n) runtime complexity.
+# 704 (Easy) Binary Search
+"""
+Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums.
+If target exists, then return its index. Otherwise, return -1.
+You must write an algorithm with O(log n) runtime complexity.
+"""
 
 class Solution:
     def search(self, nums, target):
@@ -20,8 +22,8 @@ class Solution:
     def search(self, nums, target):
         i1, i2 = 0, len(nums)-1
         while i1 <= i2:
-            mi = int((i1 + i2) / 2)
-            mv = nums[mi]
+            mi = int((i1 + i2) // 2)  # middle-index
+            mv = nums[mi]  # middle-value
             if target == mv: return mi
             if target < mv: i2 = mi-1
             else: i1 = mi+1

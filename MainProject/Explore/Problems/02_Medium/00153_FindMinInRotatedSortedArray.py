@@ -32,7 +32,7 @@ class Solution:
             m = (l + r) // 2  # l <= m < r !!! ВАЖНО что m < r => nums[m] != nums[r]
             if nums[m] > nums[r]:
                 l = m + 1
-            else:
+            else:  # nums[m] < nums[r]
                 r = m
 
 

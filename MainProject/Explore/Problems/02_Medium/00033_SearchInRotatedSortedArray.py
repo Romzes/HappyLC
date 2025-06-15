@@ -11,7 +11,7 @@ You must write an algorithm with O(log n) runtime complexity.
 Constraints:
   1 <= nums.length <= 5000
   -10^4 <= nums[i] <= 10^4
-  All values of nums are unique.
+  All values of nums are UNIQUE.
   nums is an ascending array that is possibly rotated.
   -10^4 <= target <= 10^4
 """
@@ -25,14 +25,17 @@ class Solution:
         while l <= r:
             m = int((l+r) // 2)
             if nums[l] <= nums[m]:
-                if nums[l] <= target <= nums[m]: return self.search_core(nums, target, l=l, r=m)
+                if nums[l] <= target <= nums[m]:
+                    return self.search_core(nums, target, l=l, r=m)
                 l = m+1
             else: # nums[l] > nums[m]
-                if nums[m] <= target <= nums[r]: return self.search_core(nums, target, l=m, r=r)
+                if nums[m] <= target <= nums[r]:
+                    return self.search_core(nums, target, l=m, r=r)
                 r = m-1
         return -1
 
     def search_core(self, nums, target, l, r):
+        # nums[l..r] sorted asc
         while l <= r:
             mi = int((l+r) // 2)
             mv = nums[mi]

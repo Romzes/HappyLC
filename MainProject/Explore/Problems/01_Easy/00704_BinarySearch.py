@@ -20,13 +20,13 @@ class Solution:
 
 class Solution:
     def search(self, nums, target):
-        i1, i2 = 0, len(nums)-1
-        while i1 <= i2:
-            mi = int((i1 + i2) // 2)  # middle-index
+        l, r = 0, len(nums)-1
+        while l <= r:
+            mi = int((l + r) // 2)  # middle-index
             mv = nums[mi]  # middle-value
             if target == mv: return mi
-            if target < mv: i2 = mi-1
-            else: i1 = mi+1
+            if target < mv: r = mi-1
+            else: l = mi+1
         return -1
 
 sln = Solution()

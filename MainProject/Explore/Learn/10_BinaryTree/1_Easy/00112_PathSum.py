@@ -15,9 +15,6 @@ class Solution:
         ts = targetSum - root.val
         if not root.left and not root.right: return ts == 0
         return self.hasPathSum(root.left, ts) or self.hasPathSum(root.right, ts)
-        # if root.left and self.hasPathSum(root.left, ts): return True
-        # if root.right and self.hasPathSum(root.right, ts): return True
-        # return False
 
 
 sln = Solution()

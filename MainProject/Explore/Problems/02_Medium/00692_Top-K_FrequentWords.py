@@ -14,7 +14,43 @@ Constraints:
 """
 
 from typing import List
+import heapq
 
+class Freq:
+    def __init__(self, w, cnt):
+        self.w, self.cnt = w, cnt
+
+    def __lt__(self, other):
+        d = self.cnt - other.cnt
+        return d < 0 or (d == 0 and self.w > other.w)
+
+# Runtime = 0 ms  Beats 100.00%  ;  Memory = 18.12 MB  Beats 20.21%
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
-        pass
+        counter = {}
+        for w in words: counter[w] = counter.get(w, 0) + 1
+        hp = []  # min-heap list[Freq]
+        for w, cnt in counter.items():
+            freq = Freq(w, cnt)
+            if len(hp) < k:
+                hp.append(freq)
+                if len(hp) == k: heapq.heapify(hp)
+                continue
+            # len(hp) == k
+            if freq < hp[0]: continue
+            heapq.heappushpop(hp, freq)
+        hp.sort(reverse=True)
+        return [freq.w for freq in hp]
+
+
+sln = Solution()
+print(sln.topKFrequent(words=["i","love","leetcode","i","love","coding"], k=2))
+# Output: ["i","love"]
+
+sln = Solution()
+print(sln.topKFrequent(words=["the","day","is","sunny","the","the","the","sunny","is","is"], k=4))
+# Output: ["the","is","sunny","day"]
+
+sln = Solution()
+print(sln.topKFrequent(words=["i","love","leetcode","i","love","coding"], k=3))
+# Output: ["i","love","coding"]

@@ -1,6 +1,13 @@
-# Hard 42. Trapping Rain Water
-# Given n non-negative integers representing an elevation map where the width of each bar is 1,
-# compute how much water it can trap after raining.
+# 42 (Hard) Trapping Rain Water
+"""
+Given n non-negative integers representing an elevation map where the width of each bar is 1,
+compute how much water it can trap after raining.
+
+Constraints:
+  n == height.length
+  1 <= n <= 2 * 10^4
+  0 <= height[i] <= 10^5
+"""
 
 ### O(n) space
 class Solution:
@@ -31,6 +38,7 @@ class Solution:
                 s += r_max - height[r]
                 r -= 1
         return s
+
 
 sln = Solution()
 print(sln.trap(height=[0,1,0,2,1,0,1,3,2,1,2,1]))

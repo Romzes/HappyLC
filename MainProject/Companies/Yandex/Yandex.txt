@@ -32,11 +32,11 @@ linked lists:
  
 binary search:
   704-Easy   решил https://leetcode.com/problems/binary-search/
-  https://leetcode.com/problems/guess-number-higher-or-lower/
-   74-Easy    решил https://leetcode.com/problems/search-a-2d-matrix/
-   33-Easy    решил https://leetcode.com/problems/search-in-rotated-sorted-array/         UNIQUE-ARRAY
+  374-Easy         https://leetcode.com/problems/guess-number-higher-or-lower/
+   74-Easy   решил https://leetcode.com/problems/search-a-2d-matrix/
+   33-Easy   решил https://leetcode.com/problems/search-in-rotated-sorted-array/         UNIQUE-ARRAY
   153-Medium решил https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/   UNIQUE-ARRAY
-   81-Medium        https://leetcode.com/problems/search-in-rotated-sorted-array-ii/      DUPLICATE-ARRAY
+   81-Medium        https://leetcode.com/problems/search-in-rotated-sorted-array-ii/     DUPLICATE-ARRAY
  
 hash table:
     https://leetcode.com/problems/single-number/  - решить за O(1) по памяти
@@ -54,20 +54,21 @@ dfs/bfs:
     https://leetcode.com/problems/remove-invalid-parentheses/ 
  
 sort:
-    https://leetcode.com/problems/merge-intervals/ 
+   56-Medium решил https://leetcode.com/problems/merge-intervals/
  
 heap/hash:
-    https://leetcode.com/problems/top-k-frequent-words/ 
-    https://leetcode.com/problems/top-k-frequent-elements/ 
+  692-Medium решил https://leetcode.com/problems/top-k-frequent-words/
+  347-Medium решил https://leetcode.com/problems/top-k-frequent-elements/
  
 two pointers:
-    https://leetcode.com/problems/container-with-most-water/ 
-    https://leetcode.com/problems/partition-labels/ 
+   11-Medium решил https://leetcode.com/problems/container-with-most-water/
+  763-Medium решил https://leetcode.com/problems/partition-labels/
+   42-Hard   решил https://leetcode.com/problems/trapping-rain-water/
  
 sliding window:
-    https://leetcode.com/problems/sliding-window-median/ 
-    https://leetcode.com/problems/sliding-window-maximum/ 
-    https://leetcode.com/problems/longest-repeating-character-replacement/ 
+  480-Hard https://leetcode.com/problems/sliding-window-median/
+    https://leetcode.com/problems/sliding-window-maximum/
+  424-Medium https://leetcode.com/problems/longest-repeating-character-replacement/
  
 tree:
     https://leetcode.com/problems/same-tree/ 

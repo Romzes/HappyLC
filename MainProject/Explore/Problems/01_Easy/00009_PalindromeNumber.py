@@ -32,7 +32,7 @@ class Solution:
         while x > 0:
             x, r = divmod(x, 10)
             digits.append(r)
-        for i in range(len(digits)//2):
+        for i in range(len(digits) // 2):
             if digits[i] != digits[len(digits)-1-i]: return False
         return True
 

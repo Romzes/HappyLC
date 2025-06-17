@@ -28,7 +28,7 @@ class Solution:
         while True:
             if nums[l] <= nums[r]: return nums[l]  # nums[l..r] монотонно возрастает + случай когда l = r
             # выполнено: l < r
-            m = int((l + r) // 2)  # l <= m < r !!! ВАЖНО что m < r => nums[m] != nums[r]
+            m = (l + r) // 2  # l <= m < r !!! ВАЖНО что m < r => nums[m] != nums[r]
             if nums[m] > nums[r]:
                 l = m + 1
             else:  # nums[m] < nums[r]

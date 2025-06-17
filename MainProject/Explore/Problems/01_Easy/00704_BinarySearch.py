@@ -22,7 +22,7 @@ class Solution:
     def search(self, nums, target):
         l, r = 0, len(nums)-1
         while l <= r:
-            mi = int((l + r) // 2)  # middle-index
+            mi = (l + r) // 2  # middle-index
             mv = nums[mi]  # middle-value
             if target == mv: return mi
             if target < mv: r = mi-1

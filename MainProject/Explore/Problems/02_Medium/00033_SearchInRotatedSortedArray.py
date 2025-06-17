@@ -23,7 +23,7 @@ class Solution:
     def search(self, nums: List[int], target: int) -> int:
         l, r = 0, len(nums) - 1
         while l <= r:
-            m = int((l+r) // 2)
+            m = (l+r) // 2
             if nums[l] <= nums[m]:
                 if nums[l] <= target <= nums[m]:
                     return self.search_core(nums, target, l=l, r=m)
@@ -37,7 +37,7 @@ class Solution:
     def search_core(self, nums, target, l, r):
         # nums[l..r] sorted asc
         while l <= r:
-            mi = int((l+r) // 2)
+            mi = (l+r) // 2
             mv = nums[mi]
             if target == mv: return mi
             if target < mv: r = mi-1

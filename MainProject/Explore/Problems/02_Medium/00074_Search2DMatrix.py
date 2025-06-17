@@ -21,7 +21,7 @@ class Solution:
         m, n = len(matrix), len(matrix[0])  # matrix = m-rows X n-cols
         l, r = 0, m*n-1
         while l <= r:
-            mid = int((l+r) // 2)
+            mid = (l+r) // 2
             m_row, m_col = divmod(mid, n)
             v = matrix[m_row][m_col]
             if v == target: return True

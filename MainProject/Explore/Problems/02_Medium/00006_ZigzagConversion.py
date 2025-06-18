@@ -16,10 +16,9 @@ class Solution:
         r, dr = 0, 1
         for c in s:
             rows[r].append(c)
+            if r == 0: dr = 1
+            if r == numRows-1: dr = -1
             r += dr
-            if r in (-1, numRows):
-                dr *= -1
-                r += 2*dr
         return ''.join(''.join(row) for row in rows)
 
 

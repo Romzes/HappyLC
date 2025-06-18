@@ -43,8 +43,10 @@ class Solution:
     def longestOnes(self, nums: List[int], k: int) -> int:
         longest = zeros = l = 0
         for r in range(len(nums)):
-            # nums[l..r-1] содержит (zeros <= k) нулей
-            # для заданного r находим минимальное l >= 0 такое что : nums[l..r] содержит <= k нулей
+            # Инваринат цикла:
+            # для данного r число l = минимальное число 0 <= l <= r такое, что nums[l..r-1] содержит (zeros <= k) нулей.
+            # примечание: nums[l..r-1] может быть пустым если l = r
+            # Теперь нужно найти новое l для nums[l..r]
             if nums[r] == 0:
                 zeros += 1
                 while zeros > k:

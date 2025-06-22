@@ -13,21 +13,17 @@ Constraints:
 
 from typing import List
 
-# Runtime = 0 ms  Beats 100.00%  ;  Memory = 18.38 MB  Beats 72.26%
+# Runtime = 0 ms  Beats 100.00%  ;  Memory = 18.62 MB  Beats 25.67%
 class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
         l, r = 0, len(nums)-1
-        while True:
+        while l <= r:
             m = (l + r) // 2
             v = nums[m]
             if target == v: return m
-            if target < v:
-                r = m-1
-                if r < l: return l  # target < nums[l=m]
-            else:
-                l = m+1
-                if r < l: return r+1  # nums[m=r] < target
-
+            if target < v: r = m-1
+            else: l = m+1
+        return l  # l = r+1
 
 sln = Solution()
 print(sln.searchInsert(nums=[1,3,5,6], target=5))  # Output: 2

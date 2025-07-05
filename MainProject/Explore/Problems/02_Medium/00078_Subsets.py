@@ -12,6 +12,7 @@ Constraints:
 
 from typing import List
 
+# есть рекурсия - проще код, есть оптимизации, уменьшается кол-во рекурсивных вызовов
 # Runtime = 0ms  Beats 100.00%  ;  Memory = 17.94 MB  Beats 40.18%
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:

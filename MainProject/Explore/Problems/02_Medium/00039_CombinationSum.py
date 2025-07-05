@@ -21,13 +21,14 @@ class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         candidates.sort()
         res_list = []
-        indexes = [0]  # [i_1 <= i_2 <= ... <= i_k] чтобы все комбинации были уникальными
+        indexes = [0]  # indexes = [i_1 <= i_2 <= ... <= i_k] чтобы все комбинации были уникальными
         s = candidates[0]
         while True:
             if s < target:
                 indexes.append(indexes[-1])
                 s += candidates[indexes[-1]]
                 continue
+
             if s == target:
                 res_list.append([candidates[i] for i in indexes])  # добавляется очередная комбинация
 
@@ -36,7 +37,8 @@ class Solution:
             while indexes and indexes[-1] == len(candidates)-1:
                 s -= candidates[indexes.pop()]  # индексы на этих позициях нельзя увеличивать => удаляем их
 
-            if not indexes: break
+            if not indexes: break  # больше нельзя делать шаг назад => выходим
+
             j = indexes[-1]
             indexes[-1] += 1
             s = s - candidates[j] + candidates[indexes[-1]]
@@ -44,7 +46,7 @@ class Solution:
         return res_list
 
 
-# есть рекурсия - мало кода, без оптимизации, даже НЕ сортируется массив candidates
+# есть рекурсия - самый простой код, без оптимизации, даже НЕ сортируется массив candidates
 # не все backtracking-задачи можно оптимизировать, иногда полезным и наглядным является самый простой вариант
 # Runtime = 11 ms  Beats 58.34%  ;  Memory = 17.77 MB  Beats 87.29%
 class Solution:
@@ -58,7 +60,7 @@ class Solution:
     def backtrack(self, start_ind, rest):
         if rest < 0: return
         if rest == 0:
-            self.res_list.append(self.comb[::])
+            self.res_list.append(self.comb[::])  # добавляется очередная комбинация
             return
         for i in range(start_ind, len(self.candidates)):
             self.comb.append(self.candidates[i])
@@ -66,7 +68,7 @@ class Solution:
             self.comb.pop()
 
 
-# есть рекурсия - есть оптимизации, сортируется массив candidates, уменьшается кол-во рекурсивных вызовов
+# есть рекурсия - проще код, есть оптимизации, сортируется массив candidates, уменьшается кол-во рекурсивных вызовов
 # Runtime = 3 ms  Beats 97.56%  ;  Memory = 17.63 MB  Beats 98.05%
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
@@ -79,7 +81,7 @@ class Solution:
 
     def backtrack(self, start_ind, rest):
         if rest == 0:
-            self.res_list.append(self.comb[::])
+            self.res_list.append(self.comb[::])  # добавляется очередная комбинация
             return
         for i in range(start_ind, len(self.candidates)):
             c = self.candidates[i]
@@ -91,7 +93,7 @@ class Solution:
 
 
 sln = Solution()
-print(sln.combinationSum(candidates=[2,3,6,7], target=7))  # Output: [[2,2,3],[7]]
+print(sln.combinationSum(candidates=[2,3,6,7], target=7))  # Output: [ [2,2,3], [7] ]
 """
 Explanation:
 2 and 3 are candidates, and 2 + 2 + 3 = 7. Note that 2 can be used multiple times.
@@ -100,7 +102,7 @@ These are the only two combinations.
 """
 
 sln = Solution()
-print(sln.combinationSum(candidates=[2,3,5], target=8))  # Output: [[2,2,2,2],[2,3,3],[3,5]]
+print(sln.combinationSum(candidates=[2,3,5], target=8))  # Output: [ [2,2,2,2], [2,3,3], [3,5] ]
 
 sln = Solution()
 print(sln.combinationSum(candidates=[2], target=1))  # Output: []

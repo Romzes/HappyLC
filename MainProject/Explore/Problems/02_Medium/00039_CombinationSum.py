@@ -15,12 +15,13 @@ Constraints:
 
 from typing import List
 
-# Runtime = 0 ms  Beats 100.00%  ;  Memory = 17.89 MB  Beats 61.58%
+# без рекурсии - самый быстрый !!!
+# Runtime = 0 ms  Beats 100.00%  ;  Memory = 17.66 MB  Beats 98.05%
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         candidates.sort()
         res_list = []
-        indexes = [0]  # индексы монотонно не убывают
+        indexes = [0]  # [i_1 <= i_2 <= ... <= i_k] чтобы все комбинации были уникальными
         s = candidates[0]
         while True:
             if s < target:
@@ -28,14 +29,12 @@ class Solution:
                 s += candidates[indexes[-1]]
                 continue
             if s == target:
-                # indexes монотонно не убывают => каждая новая комбинация comb будет уникальной в res_list
-                comb = [candidates[i] for i in indexes]
-                res_list.append(comb)
-            # target <= s
+                res_list.append([candidates[i] for i in indexes])  # добавляется очередная комбинация
+
+            # target <= s, candidates отсортированы => indexes[-1] не увеличиваем, а делаем шаги назад - backtracking
             s -= candidates[indexes.pop()]
             while indexes and indexes[-1] == len(candidates)-1:
-                # индексы на этих позициях нельзя увеличивать => удаляем их
-                s -= candidates[indexes.pop()]
+                s -= candidates[indexes.pop()]  # индексы на этих позициях нельзя увеличивать => удаляем их
 
             if not indexes: break
             j = indexes[-1]
@@ -43,6 +42,51 @@ class Solution:
             s = s - candidates[j] + candidates[indexes[-1]]
 
         return res_list
+
+
+# есть рекурсия - мало кода, без оптимизации, даже НЕ сортируется массив candidates
+# не все backtracking-задачи можно оптимизировать, иногда полезным и наглядным является самый простой вариант
+# Runtime = 11 ms  Beats 58.34%  ;  Memory = 17.77 MB  Beats 87.29%
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        self.candidates = candidates
+        self.comb = []  # comb = [candidates[i_1], ... candidates[i_k]], где i_1 <= i_2 <= ... <= i_k чтобы все комбинации были уникальными
+        self.res_list = []
+        self.backtrack(start_ind=0, rest=target)
+        return self.res_list
+
+    def backtrack(self, start_ind, rest):
+        if rest < 0: return
+        if rest == 0:
+            self.res_list.append(self.comb[::])
+            return
+        for i in range(start_ind, len(self.candidates)):
+            self.comb.append(self.candidates[i])
+            self.backtrack(start_ind=i, rest=rest-self.candidates[i])
+            self.comb.pop()
+
+# есть рекурсия - есть оптимизации, сортируется массив candidates, уменьшается кол-во рекурсивных вызовов
+# Runtime = 3 ms  Beats 97.56%  ;  Memory = 17.63 MB  Beats 98.05%
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        candidates.sort()
+        self.candidates = candidates
+        self.comb = []  # comb = [candidates[i_1], ... candidates[i_k]], где i_1 <= i_2 <= ... <= i_k чтобы все комбинации были уникальными
+        self.res_list = []
+        self.backtrack(start_ind=0, rest=target)
+        return self.res_list
+
+    def backtrack(self, start_ind, rest):
+        if rest == 0:
+            self.res_list.append(self.comb[::])
+            return
+        for i in range(start_ind, len(self.candidates)):
+            c = self.candidates[i]
+            next_rest = rest - c
+            if next_rest < 0: return  # candidates отсортированы => выход из цикла
+            self.comb.append(c)
+            self.backtrack(start_ind=i, rest=next_rest)
+            self.comb.pop()
 
 
 sln = Solution()

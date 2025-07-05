@@ -15,7 +15,7 @@ Constraints:
 
 from typing import List
 
-# Runtime = 3ms  Beats 97.53%  ;  Memory = 18.05 MB  Beats 19.30 %
+# Runtime = 0 ms  Beats 100.00%  ;  Memory = 17.89 MB  Beats 61.58%
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         candidates.sort()
@@ -36,10 +36,12 @@ class Solution:
             while indexes and indexes[-1] == len(candidates)-1:
                 # индексы на этих позициях нельзя увеличивать => удаляем их
                 s -= candidates[indexes.pop()]
+
             if not indexes: break
             j = indexes[-1]
-            indexes[-1] = j+1
-            s = s - candidates[j] + candidates[j+1]
+            indexes[-1] += 1
+            s = s - candidates[j] + candidates[indexes[-1]]
+
         return res_list
 
 

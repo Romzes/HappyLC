@@ -11,23 +11,26 @@ Constraints:
 
 from typing import List
 
+# есть рекурсия - проще код, есть оптимизации, сортируется массив nums, уменьшается кол-во рекурсивных вызовов
 # Runtime = 0 ms  Beats 100.00%  ;  Memory = 17.90 MB  Beats 84.81%
 class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
         self.nums = nums
-        self.comb = []
-        self.res_list = [[]]
+        self.comb = []  # [nums[i_1], nums[i2], ... nums[i_k]]
+        # где 0 <= i_1 < i_2 < ... < i_k < len(nums) чтобы все подмножества были уникальными
+        self.res_list = [[]]  # сразу добавили пустое множество
         self.backtrack(start_ind=0)
         return self.res_list
 
     def backtrack(self, start_ind):
+        # start_ind = index of nums
         for i in range(start_ind, len(self.nums)):
             if start_ind < i and self.nums[i-1] == self.nums[i]:
-                continue
+                continue  # чтобы все комбинации были уникальными. важно, что nums отсортированы.
             self.comb.append(self.nums[i])
             self.res_list.append(self.comb[::])
-            if i + 1 < len(self.nums): self.backtrack(start_ind=i + 1)
+            if i+1 < len(self.nums): self.backtrack(start_ind=i+1)
             self.comb.pop()
 
 

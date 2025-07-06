@@ -16,14 +16,14 @@ class Solution:
     def partition(self, s: str) -> List[List[str]]:
         self.s = s
         self.pals = self.find_palindromes(s)
-        self.comb = []
-        self.partition = []
+        self.comb = []  # комбинация палиндромов
+        self.res_list = []
         self.backtrack(start_ind=0)
-        return self.partition
+        return self.res_list
 
     def backtrack(self, start_ind):
         if start_ind == len(self.s):
-            self.partition.append(self.comb[::])
+            self.res_list.append(self.comb[::])
             return
         for i in range(start_ind, len(self.s)):
             indexes = self.pals.get(start_ind)
@@ -55,29 +55,31 @@ class Solution:
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         self.s = s
-        self.comb = []
-        self.partition = []
+        self.comb = []  # комбинация палиндромов
+        self.res_list = []
         self.backtrack(start_ind=0)
-        return self.partition
+        return self.res_list
 
     def backtrack(self, start_ind):
+        # start_ind = index of string s
         if start_ind == len(self.s):
-            self.partition.append(self.comb[::])
+            self.res_list.append(self.comb[::])
             return
         for i in range(start_ind, len(self.s)):
             pal = self.s[start_ind:i+1]
             if pal == pal[::-1]:
+                # pal = palindrome
                 self.comb.append(pal)
                 self.backtrack(start_ind=i+1)
                 self.comb.pop()
 
 
 sln = Solution()
-partition = sln.partition(s='aab')
+partition = sln.res_list(s='aab')
 print(len(partition), partition)
 # Output: [["a","a","b"],["aa","b"]]
 
 sln = Solution()
-partition = sln.partition(s='a')
+partition = sln.res_list(s='a')
 print(len(partition), partition)
 # Output: [["a"]]

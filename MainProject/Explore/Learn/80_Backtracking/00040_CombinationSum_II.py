@@ -63,7 +63,8 @@ class Solution:
             return
         for i in range(start_ind, len(self.candidates)):
             c = self.candidates[i]
-            if start_ind < i and c == self.candidates[i-1]: continue  # чтобы все комбинации были уникальными
+            if start_ind < i and c == self.candidates[i-1]:
+                continue  # чтобы все комбинации были уникальными. важно, что candidates отсортированы.
             next_rest = rest - c
             if next_rest < 0: return  # candidates отсортированы => выход из цикла
             self.comb.append(c)

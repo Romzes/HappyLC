@@ -14,7 +14,7 @@ Constraints:
 
 from typing import List
 
-# без рекурсии - быстркк
+# без рекурсии - быстрее
 # Runtime = 3ms  Beats 91.46%  ;  Memory = 17.92 MB  Beats 34.99%
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
@@ -57,6 +57,7 @@ class Solution:
         return self.res_list
 
     def backtrack(self, start_ind, rest):
+        # start_ind = index of candidates ; rest остаток суммы до target
         if rest == 0:
             self.res_list.append(self.comb[::])  # добавляется очередная комбинация
             return

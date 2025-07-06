@@ -13,6 +13,17 @@ Constraints:
   1 <= target <= 40
 """
 
+""" A general approach to backtracking questions in Java (Subsets, Permutations, Combination Sum, Palindrome)
+https://leetcode.com/problems/combination-sum/solutions/16502/a-general-approach-to-backtracking-quest-dexx/
+Problem   78  https://leetcode.com/problems/subsets/
+Problem   90  https://leetcode.com/problems/subsets-ii/
+Problem   46  https://leetcode.com/problems/permutations/
+Problem   47  https://leetcode.com/problems/permutations-ii/
+Problem   39  https://leetcode.com/problems/combination-sum/
+Problem   40  https://leetcode.com/problems/combination-sum-ii/
+Problem  131  https://leetcode.com/problems/palindrome-partitioning/
+"""
+
 from typing import List
 
 # без рекурсии - самый быстрый !!!
@@ -58,6 +69,7 @@ class Solution:
         return self.res_list
 
     def backtrack(self, start_ind, rest):
+        # start_ind = index of candidates ; rest остаток суммы до target
         if rest < 0: return
         if rest == 0:
             self.res_list.append(self.comb[::])  # добавляется очередная комбинация
@@ -80,6 +92,7 @@ class Solution:
         return self.res_list
 
     def backtrack(self, start_ind, rest):
+        # start_ind = index of candidates ; rest остаток суммы до target
         if rest == 0:
             self.res_list.append(self.comb[::])  # добавляется очередная комбинация
             return

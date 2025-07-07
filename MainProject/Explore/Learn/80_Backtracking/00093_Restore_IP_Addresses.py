@@ -17,7 +17,7 @@ Constraints:
 
 from typing import List
 
-# Runtime = 0ms  Beats 100.00%  ;  Memory = 17.96MB  Beats 28.09%
+# Runtime = 0ms  Beats 100.00%  ;  Memory = 17.90MB  Beats 48.28%
 class Solution:
     def restoreIpAddresses(self, s: str) -> List[str]:
         self.s = s
@@ -31,12 +31,14 @@ class Solution:
         if start_ind == len(self.s) or len(self.comb) == 4:
             if start_ind == len(self.s) and len(self.comb) == 4: self.res_list.append('.'.join(self.comb))
             return
+
+        min_len = len(self.s) - start_ind - 3 * (3 - len(self.comb))
         for j in range(1, 4):
             next_ind = start_ind + j
             if next_ind > len(self.s): return
             v = self.s[start_ind:next_ind]
             if (v[0] == '0' and 1 < len(v)) or 255 < int(v): return
-            if start_ind + len(v) + 3*(3 - len(self.comb)) < len(self.s): continue
+            if len(v) < min_len: continue
             self.comb.append(v)
             self.backtrack(start_ind=next_ind)
             self.comb.pop()

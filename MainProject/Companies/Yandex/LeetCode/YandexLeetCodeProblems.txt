@@ -1,0 +1,30 @@
+   1 (+)   Easy. Two Sum  https://leetcode.com/problems/two-sum
+        Array, Hash Table
+   2 (-) Medium. Add Two Numbers https://leetcode.com/problems/add-two-numbers
+        Linked List, Math, Recursion
+   3 (+) Medium. Longest Substring Without Repeating Characters https://leetcode.com/problems/longest-substring-without-repeating-characters
+        Hash Table, String, Sliding Window
+   4 (-)   Hard. Median of Two Sorted Arrays https://leetcode.com/problems/median-of-two-sorted-array
+        Array, Binary Search, Divide and Conquer
+   5 (+) Medium. Longest Palindromic Substring https://leetcode.com/problems/longest-palindromic-substring
+        Two Pointers, String, Dynamic Programming
+   7 (-) Medium. Reverse Integer https://leetcode.com/problems/reverse-integer
+        Math
+   9 (+)   Easy. Palindrome Number https://leetcode.com/problems/palindrome-number
+        Math
+  11 (+) Medium. Container With Most Water https://leetcode.com/problems/container-with-most-water
+        Array, Two Pointers, Greedy
+  15 (+) Medium. 3Sum https://leetcode.com/problems/3sum
+        Array, Two Pointers, Sorting
+  20 (+)   Easy. Valid Parentheses https://leetcode.com/problems/valid-parentheses
+        String, Stack
+
+
+
+
+
+
+
+
+
+

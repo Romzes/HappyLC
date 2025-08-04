@@ -26,8 +26,17 @@
         Linked List, Divide and Conquer, Heap (Priority Queue), Merge Sort
   27 (+)   Easy. Remove Element https://leetcode.com/problems/remove-element
         Array, Two Pointers
-  33 (-) Medium. Search in Rotated Sorted Array https://leetcode.com/problems/search-in-rotated-sorted-array
+  33 (+) Medium. Search in Rotated Sorted Array https://leetcode.com/problems/search-in-rotated-sorted-array
         Array, Binary Search
+  42 (+)   Hard. Trapping Rain Water https://leetcode.com/problems/trapping-rain-water
+        Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack
+  56 (+) Medium. https://leetcode.com/problems/merge-intervals
+        Array, Sorting
+ 704 (+)   Easy. Binary Search https://leetcode.com/problems/binary-search
+        Array, Binary Search
+ 763 (+) Medium. Partition Labels https://leetcode.com/problems/partition-labels
+        Hash Table, Two Pointers, String, Greedy, Weekly Contest 67
+
 
 
 

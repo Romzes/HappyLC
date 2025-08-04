@@ -1,40 +1,44 @@
-   1 (+)   Easy. Two Sum  https://leetcode.com/problems/two-sum
+   1 (+)   Easy. Two Sum. https://leetcode.com/problems/two-sum
         Array, Hash Table
-   2 (-) Medium. Add Two Numbers https://leetcode.com/problems/add-two-numbers
+   2 (-) Medium. Add Two Numbers. https://leetcode.com/problems/add-two-numbers
         Linked List, Math, Recursion
-   3 (+) Medium. Longest Substring Without Repeating Characters https://leetcode.com/problems/longest-substring-without-repeating-characters
+   3 (+) Medium. Longest Substring Without Repeating Characters. https://leetcode.com/problems/longest-substring-without-repeating-characters
         Hash Table, String, Sliding Window
-   4 (-)   Hard. Median of Two Sorted Arrays https://leetcode.com/problems/median-of-two-sorted-array
+   4 (-)   Hard. Median of Two Sorted Arrays. https://leetcode.com/problems/median-of-two-sorted-array
         Array, Binary Search, Divide and Conquer
-   5 (+) Medium. Longest Palindromic Substring https://leetcode.com/problems/longest-palindromic-substring
+   5 (+) Medium. Longest Palindromic Substring. https://leetcode.com/problems/longest-palindromic-substring
         Two Pointers, String, Dynamic Programming
-   7 (-) Medium. Reverse Integer https://leetcode.com/problems/reverse-integer
+   7 (-) Medium. Reverse Integer. https://leetcode.com/problems/reverse-integer
         Math
-   9 (+)   Easy. Palindrome Number https://leetcode.com/problems/palindrome-number
+   9 (+)   Easy. Palindrome Number. https://leetcode.com/problems/palindrome-number
         Math
-  11 (+) Medium. Container With Most Water https://leetcode.com/problems/container-with-most-water
+  11 (+) Medium. Container With Most Water. https://leetcode.com/problems/container-with-most-water
         Array, Two Pointers, Greedy
   15 (+) Medium. 3Sum https://leetcode.com/problems/3sum
         Array, Two Pointers, Sorting
-  20 (+)   Easy. Valid Parentheses https://leetcode.com/problems/valid-parentheses
+  20 (+)   Easy. Valid Parentheses. https://leetcode.com/problems/valid-parentheses
         String, Stack
-  21 (-)   Easy. Merge Two Sorted Lists https://leetcode.com/problems/merge-two-sorted-lists
+  21 (-)   Easy. Merge Two Sorted Lists. https://leetcode.com/problems/merge-two-sorted-lists
         Linked List, Recursion
-  22 (+) Medium. Generate Parentheses https://leetcode.com/problems/generate-parentheses
+  22 (+) Medium. Generate Parentheses. https://leetcode.com/problems/generate-parentheses
         String, Dynamic Programming, Backtracking
-  23 (-)   Hard. Merge k Sorted Lists https://leetcode.com/problems/merge-k-sorted-lists
+  23 (-)   Hard. Merge k Sorted Lists. https://leetcode.com/problems/merge-k-sorted-lists
         Linked List, Divide and Conquer, Heap (Priority Queue), Merge Sort
-  27 (+)   Easy. Remove Element https://leetcode.com/problems/remove-element
+  27 (+)   Easy. Remove Element. https://leetcode.com/problems/remove-element
         Array, Two Pointers
-  33 (+) Medium. Search in Rotated Sorted Array https://leetcode.com/problems/search-in-rotated-sorted-array
+  33 (+) Medium. Search in Rotated Sorted Array. https://leetcode.com/problems/search-in-rotated-sorted-array
         Array, Binary Search
-  42 (+)   Hard. Trapping Rain Water https://leetcode.com/problems/trapping-rain-water
+  42 (+)   Hard. Trapping Rain Water. https://leetcode.com/problems/trapping-rain-water
         Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack
-  56 (+) Medium. https://leetcode.com/problems/merge-intervals
+  56 (+) Medium. Merge Intervals. https://leetcode.com/problems/merge-intervals
         Array, Sorting
- 704 (+)   Easy. Binary Search https://leetcode.com/problems/binary-search
+ 228 (+)   Easy. Summary Ranges. https://leetcode.com/problems/summary-ranges
+        Array
+ 350 (+)   Easy. Intersection of Two Arrays II. https://leetcode.com/problems/intersection-of-two-arrays-ii
+        Array, Hash Table, Two Pointers, Binary Search, Sorting
+ 704 (+)   Easy. Binary Search. https://leetcode.com/problems/binary-search
         Array, Binary Search
- 763 (+) Medium. Partition Labels https://leetcode.com/problems/partition-labels
+ 763 (+) Medium. Partition Labels. https://leetcode.com/problems/partition-labels
         Hash Table, Two Pointers, String, Greedy, Weekly Contest 67
 
 

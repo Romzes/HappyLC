@@ -66,11 +66,28 @@ class Solution:
                     else: break
             curr_level = next_level
 
+
+# НЕПРАВИЛЬНОЕ РЕШЕНИЕ - самый большой квадрат
+class Solution:
+    def numSquares(self, n: int) -> int:
+        sqrt_n = int(n ** 0.5)  # sqrt_n ** 2 <= n
+        if sqrt_n ** 2 == n: return 1
+        squares = [k**2 for k in range(sqrt_n, 0, -1)]
+        rest = n
+        i = 0
+        cnt = 0
+        while rest > 0:
+            cnt += 1
+            while rest < squares[i]: i += 1
+            rest -= squares[i]
+        return cnt
+
+
 sln = Solution()
 print(sln.numSquares(n=1))
 
 sln = Solution()
-print(sln.numSquares(n=12))
+print(sln.numSquares(n=12))  # 12 = 9+1+1+1 = 4+4+4  => самое большой квадрат выбирать не всегда правильно
 
 sln = Solution()
 print(sln.numSquares(n=13))

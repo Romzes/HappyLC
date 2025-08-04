@@ -30,6 +30,8 @@
         Array, Binary Search
   42 (+)   Hard. Trapping Rain Water. https://leetcode.com/problems/trapping-rain-water
         Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack
+  49 (+) Medium. Group Anagrams. https://leetcode.com/problems/group-anagrams
+        Array, Hash Table, String, Sorting
   56 (+) Medium. Merge Intervals. https://leetcode.com/problems/merge-intervals
         Array, Sorting
  228 (+)   Easy. Summary Ranges. https://leetcode.com/problems/summary-ranges
@@ -40,6 +42,8 @@
         Array, Binary Search
  763 (+) Medium. Partition Labels. https://leetcode.com/problems/partition-labels
         Hash Table, Two Pointers, String, Greedy, Weekly Contest 67
+1493 (+) Medium. Longest Subarray of 1's After Deleting One Element. https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element
+        Array, Dynamic Programming, Sliding Window, Biweekly Contest 29
 
 
 

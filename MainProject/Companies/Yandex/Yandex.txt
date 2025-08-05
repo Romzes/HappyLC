@@ -1,22 +1,46 @@
-https://habr.com/ru/articles/550088/
-Задача  1) (+) LeetCode  350 (Easy)   Intersection of Two Arrays II. https://leetcode.com/problems/intersection-of-two-arrays-ii
-Задача  2) (+) LeetCode  443 (Medium) String Compression. https://leetcode.com/problems/string-compression
-Задача  3) (+) LeetCode  228 (Easy)   Summary Ranges. https://leetcode.com/problems/summary-ranges
-Задача  4) (+) LeetCode 1493 (Medium) Longest Subarray of 1's After Deleting One Element. https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element
-Задача  5) (+) LeetCode  253 (Medium) Meeting Rooms II. https://leetcode.com/problems/meeting-rooms-ii
-Задача  6) (+) LeetCode   49 (Medium) Group Anagrams. https://leetcode.com/problems/group-anagrams
-Задача  7) (+) LeetCode   56 (Medium) Merge Intervals. https://leetcode.com/problems/merge-intervals
+########## PDF Материалы для подготовки ################################################################################
+Для удобства можете воспользоваться готовым списком:
+binary search:
+ 704 (+)   Easy. Binary Search. https://leetcode.com/problems/binary-search
+  33 (+) Medium. Search in Rotated Sorted Array. https://leetcode.com/problems/search-in-rotated-sorted-array
+hash table:
+ 136 (+)   Easy. Single Number. https://leetcode.com/problems/single-number
+   1 (+)   Easy. Two Sum. https://leetcode.com/problems/two-sum
+queue/stack:
+  20 (+)   Easy. Valid Parentheses. https://leetcode.com/problems/valid-parentheses
+dfs/bfs:
+ 200 (-) Medium. Number of Islands. https://leetcode.com/problems/number-of-islands
+sort:
+  56 (+) Medium. Merge Intervals. https://leetcode.com/problems/merge-intervals
+two pointers:
+  11 (+) Medium. Container With Most Water. https://leetcode.com/problems/container-with-most-water
+ 763 (+) Medium. Partition Labels. https://leetcode.com/problems/partition-labels
+sliding window:
+ 480 (-)   Hard. Sliding Window Median. https://leetcode.com/problems/sliding-window-median
+ 239 (-)   Hard. Sliding Window Maximum. https://leetcode.com/problems/sliding-window-maximum
+● https://leetcode.com/problems/longest-repea{ng-character-replacement
+tree:
+● https://leetcode.com/problems/same-tree/
+● https://leetcode.com/problems/symmetric-tree/
+
+########## https://habr.com/ru/articles/550088 #########################################################################
+ 350 (+)   Easy. Intersection of Two Arrays II. https://leetcode.com/problems/intersection-of-two-arrays-ii
+ 443 (+) Medium. String Compression. https://leetcode.com/problems/string-compression
+ 228 (+)   Easy. Summary Ranges. https://leetcode.com/problems/summary-ranges
+1493 (+) Medium. Longest Subarray of 1's After Deleting One Element. https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element
+ 253 (+) Medium. Meeting Rooms II. https://leetcode.com/problems/meeting-rooms-ii
+  49 (+) Medium. Group Anagrams. https://leetcode.com/problems/group-anagrams
+  56 (+) Medium. Merge Intervals. https://leetcode.com/problems/merge-intervals
 Задача  8) (+) LeetCode Дан массив точек с целочисленными координатами (x, y). Определить, существует ли вертикальная прямая, делящая точки на 2 симметричных относительно этой прямой множества.
-Задача  9) (+) LeetCode  161 (Medium) One Edit Distance. https://leetcode.com/problems/one-edit-distance отличие: есть insert
-Задача 10) (+) LeetCode  325 (Medium) Maximum Size Subarray Sum Equals k. https://leetcode.com/problems/maximum-size-subarray-sum-equals-k
+ 161 (+) Medium. One Edit Distance. https://leetcode.com/problems/one-edit-distance (отличие: есть insert)
+ 325 (+) Medium. Maximum Size Subarray Sum Equals k. https://leetcode.com/problems/maximum-size-subarray-sum-equals-k
 
-
+########## https://postypashki.ru/яндекс ###############################################################################
 
 https://leetcode.com/company/yandex/discuss?currentPage=1&orderBy=newest_to_oldest&query=
 
 https://leetcode.com/company/yandex/discuss/3305189/Yandex-or-OA-or-Count-common-elements-for-prefixes
 
-https://habr.com/ru/articles/550088/
 http://judge.mipt.ru/mipt_cs_on_python3/
 
 

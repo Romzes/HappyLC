@@ -1,6 +1,7 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        stack, open, close = [], '([{', ')]}'
+        stack = []
+        open, close = '([{', ')]}'
         for c in s:
             if c in open:
                 stack.append(c)
@@ -13,7 +14,8 @@ class Solution:
 
 class Solution:
     def isValid(self, s):
-        brackets, stack = {'(':')', '{':'}', '[':']'}, []
+        stack = []
+        brackets = {'(':')', '{':'}', '[':']'}
         for c in s:
             if c in brackets: stack.append(c)
             else:

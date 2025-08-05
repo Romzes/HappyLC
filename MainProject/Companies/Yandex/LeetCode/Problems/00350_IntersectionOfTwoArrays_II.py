@@ -9,9 +9,10 @@ class Solution:
         for v in nums2: dict2[v] += 1
         res_list = []
         for v in nums1:
-            if not dict2.get(v): continue
+            cnt = dict2.get(v)
+            if not cnt: continue  # cnt is None or cnt == 0
             res_list.append(v)
-            dict2[v] -= 1
+            dict2[v] = cnt - 1
         return res_list
 
 sln = Solution()  # Example 1

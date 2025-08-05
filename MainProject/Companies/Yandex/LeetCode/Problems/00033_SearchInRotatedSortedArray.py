@@ -6,13 +6,11 @@ class Solution:
         l, r = 0, len(nums)-1
         while l <= r:
             m = (l + r) // 2
-            if target == nums[m]: return m
-            if nums[l] <= nums[m]:
-                # Условие сравнения <=, а не nums[l] < nums[m] . Чтобы правильно обработать случай nums=[3,1], target=1
-                if nums[l] <= target <= nums[m]: return self.search_core(nums, target, l=l, r=m-1)
+            if nums[l] <= nums[m]:  # Условие сравнения <=, а не nums[l] < nums[m] . Чтобы правильно обработать случай nums=[3,1], target=1
+                if nums[l] <= target <= nums[m]: return self.search_core(nums, target, l=l, r=m)
                 l = m+1
             else: # nums[l] > nums[m]
-                if nums[m] <= target <= nums[r]: return self.search_core(nums, target, l=m+1, r=r)
+                if nums[m] <= target <= nums[r]: return self.search_core(nums, target, l=m, r=r)
                 r = m-1
         return -1
 

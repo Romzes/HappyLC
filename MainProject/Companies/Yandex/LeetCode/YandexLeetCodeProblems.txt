@@ -34,6 +34,10 @@
         Array, Hash Table, String, Sorting
   56 (+) Medium. Merge Intervals. https://leetcode.com/problems/merge-intervals
         Array, Sorting
+ 136 (+)   Easy. Single Number. https://leetcode.com/problems/single-number
+        Array, Bit Manipulation
+ 200 (-) Medium. Number of Islands. https://leetcode.com/problems/number-of-islands
+        Array, Depth-First Search, Breadth-First Search, Union Find, Matrix
  228 (+)   Easy. Summary Ranges. https://leetcode.com/problems/summary-ranges
         Array
  350 (+)   Easy. Intersection of Two Arrays II. https://leetcode.com/problems/intersection-of-two-arrays-ii

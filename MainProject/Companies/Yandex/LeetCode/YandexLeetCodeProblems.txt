@@ -34,14 +34,20 @@
         Array, Hash Table, String, Sorting
   56 (+) Medium. Merge Intervals. https://leetcode.com/problems/merge-intervals
         Array, Sorting
+ 100 (+)   Easy. Same Tree. https://leetcode.com/problems/same-tree
+        Tree, Depth-First Search, Breadth-First Search, Binary Tree
+ 101 (+)   Easy. Symmetric Tree. https://leetcode.com/problems/symmetric-tree
+        Tree, Depth-First Search, Breadth-First Search, Binary Tree
  136 (+)   Easy. Single Number. https://leetcode.com/problems/single-number
         Array, Bit Manipulation
- 200 (-) Medium. Number of Islands. https://leetcode.com/problems/number-of-islands
+ 200 (+) Medium. Number of Islands. https://leetcode.com/problems/number-of-islands
         Array, Depth-First Search, Breadth-First Search, Union Find, Matrix
  228 (+)   Easy. Summary Ranges. https://leetcode.com/problems/summary-ranges
         Array
  350 (+)   Easy. Intersection of Two Arrays II. https://leetcode.com/problems/intersection-of-two-arrays-ii
         Array, Hash Table, Two Pointers, Binary Search, Sorting
+ 424 (-) Medium. Longest Repeating Character Replacement. https://leetcode.com/problems/longest-repeating-character-replacement
+        Hash Table, String, Sliding Window
  704 (+)   Easy. Binary Search. https://leetcode.com/problems/binary-search
         Array, Binary Search
  763 (+) Medium. Partition Labels. https://leetcode.com/problems/partition-labels

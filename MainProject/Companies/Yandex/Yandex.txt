@@ -9,7 +9,7 @@ hash table:
 queue/stack:
   20 (+)   Easy. Valid Parentheses. https://leetcode.com/problems/valid-parentheses
 dfs/bfs:
- 200 (-) Medium. Number of Islands. https://leetcode.com/problems/number-of-islands
+ 200 (+) Medium. Number of Islands. https://leetcode.com/problems/number-of-islands
 sort:
   56 (+) Medium. Merge Intervals. https://leetcode.com/problems/merge-intervals
 two pointers:
@@ -18,10 +18,10 @@ two pointers:
 sliding window:
  480 (-)   Hard. Sliding Window Median. https://leetcode.com/problems/sliding-window-median
  239 (-)   Hard. Sliding Window Maximum. https://leetcode.com/problems/sliding-window-maximum
-● https://leetcode.com/problems/longest-repea{ng-character-replacement
+ 424 (-) Medium. Longest Repeating Character Replacement. https://leetcode.com/problems/longest-repeating-character-replacement
 tree:
-● https://leetcode.com/problems/same-tree/
-● https://leetcode.com/problems/symmetric-tree/
+ 100 (+)   Easy. Same Tree. https://leetcode.com/problems/same-tree
+ 101 (+)   Easy. Symmetric Tree. https://leetcode.com/problems/symmetric-tree
 
 ########## https://habr.com/ru/articles/550088 #########################################################################
  350 (+)   Easy. Intersection of Two Arrays II. https://leetcode.com/problems/intersection-of-two-arrays-ii

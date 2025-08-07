@@ -44,6 +44,8 @@
         Array, Depth-First Search, Breadth-First Search, Union Find, Matrix
  228 (+)   Easy. Summary Ranges. https://leetcode.com/problems/summary-ranges
         Array
+ 325 (+) Medium. Maximum Size Subarray Sum Equals k. https://leetcode.com/problems/maximum-size-subarray-sum-equals-k
+        Array, Hash Table, Prefix Sum
  350 (+)   Easy. Intersection of Two Arrays II. https://leetcode.com/problems/intersection-of-two-arrays-ii
         Array, Hash Table, Two Pointers, Binary Search, Sorting
  424 (-) Medium. Longest Repeating Character Replacement. https://leetcode.com/problems/longest-repeating-character-replacement
